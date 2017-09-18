@@ -27,11 +27,15 @@ echo "${_PROMPT}${_TASK}${_TICK} Done updatings!"
 
 
 #################################################################### UNIX INSTALLS #####
-# sudo apt -qq install dos2unix unix2dos
-# echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
+sudo apt -qq install zsh
+echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
 
-# sudo apt -qq install zsh
-# echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh"
+
+sudo apt -qq install dos2unix unix2dos
+echo "${_PROMPT}${_TASK}${_TICK} Installed dos2unix unix2dos"
+
 
 # sudo apt -qq install zsh
 # echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
