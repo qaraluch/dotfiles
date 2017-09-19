@@ -18,19 +18,21 @@ echo "${_PROMPT}                                                        by qaral
 echo "---------------------------------------------------------------------------------"
 
 ######################################################################### UPDATES ######
-git pull
-echo "${_PROMPT}${_TASK}${_TICK} Dotfiles are up-to-dated!"
-
-echo "${_PROMPT}${_TASK} About to run sys updates..."
+echo "${_PROMPT} About to run sys updates..."
 sudo apt -qq update
 sudo apt -qq upgrade
 echo "${_PROMPT}${_TASK}${_TICK} Done updatings!"
 
-
 #################################################################### UNIX INSTALLS #####
+echo "${_PROMPT}${_TASK} Installation zsh..."
 sudo apt -qq install zsh
-echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
+echo "${_PROMPT}${_TASK}${_TICK} Done!"
 
+echo "${_PROMPT}${_TASK} Installation dos2unix..."
+sudo apt -qq install dos2unix
+echo "${_PROMPT}${_TASK}${_TICK} Done!"
+
+echo "${_PROMPT}${_TASK} Installation oh-my-zsh..."
 if [ ! -d $HOME/.oh-my-zsh  ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh"
@@ -38,12 +40,21 @@ else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of oh-my-zsh. Already installed!"
 fi
 
-sudo apt -qq install dos2unix
-echo "${_PROMPT}${_TASK}${_TICK} Installed dos2unix"
-
+echo "${_PROMPT}${_TASK} Installation fzf..."
+if [ ! -d $HOME/.fzf  ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  $HOME/.fzf/install
+  echo "${_PROMPT}${_TASK}${_TICK} Installed fzf"
+else
+  echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of fzf. Already installed!"
+fi
 
 # sudo apt -qq install zsh
 # echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
+
+######################################################################### SYMLINKS #######
+
+
 
 ######################################################################### FOOTER #######
 echo "-------------------------------------------------------------------- [ END ] ----"
