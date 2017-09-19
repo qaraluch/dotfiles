@@ -4,6 +4,11 @@ case $- in
       *) return;;
 esac
 
+# launch zsh
+if [ -t 1 ]; then
+  exec zsh
+fi
+
 # from installation of fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
