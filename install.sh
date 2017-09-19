@@ -35,7 +35,7 @@ echo "${_PROMPT}${_TASK}${_TICK} Done!"
 echo "${_PROMPT}${_TASK} Installation oh-my-zsh..."
 if [ ! -d $HOME/.oh-my-zsh  ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh"
+  echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh."
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of oh-my-zsh. Already installed!"
 fi
@@ -44,17 +44,26 @@ echo "${_PROMPT}${_TASK} Installation fzf..."
 if [ ! -d $HOME/.fzf  ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
   $HOME/.fzf/install
-  echo "${_PROMPT}${_TASK}${_TICK} Installed fzf"
+  echo "${_PROMPT}${_TASK}${_TICK} Installed fzf."
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of fzf. Already installed!"
 fi
 
-# sudo apt -qq install zsh
-# echo "${_PROMPT}${_TASK}${_TICK} Installed zsh"
-
 ######################################################################### SYMLINKS #######
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+## DRIVES
+`rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
+`rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
+`rm -rf $HOME/h` && `ln -sf /mnt/h $HOME/h`
+echo "${_PROMPT}${_TASK}${_TICK} Symlinked main drives."
 
+## DIRS
+`rm -rf $HOME/whome` && `ln -sf $_DOTFILES_WINHOME $HOME/whome`       # see dotfiles-cfg/.dotfiles-config
+echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
+
+##################################################################### SYMLINKS CFGS ####
+# ln -sf ${BASEDIR}/zshrc ~/.zshrc
 
 ######################################################################### FOOTER #######
 echo "-------------------------------------------------------------------- [ END ] ----"
