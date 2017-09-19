@@ -20,6 +20,11 @@ export C_END=$'\033[0m'
 # ICONS
 export I_TICK="[ ${C_GREEN}✔${C_END} ]"
 
+# UTIL
+line_break() {
+  echo " "
+}
+
 # COMMON COMMANDS
 mkdir() { command mkdir -pv $@ ; }
 ex() { explorer.exe . ; }
