@@ -1,0 +1,72 @@
+g() {
+    if [[  $# -eq 0 ]]; then
+      gs
+    else
+      git $*
+    fi
+}
+
+gs() { git status -s -u ; }
+gd() { git diff $* ; }
+gp() { git push $* ; line_break ; gl ; }
+
+ga() {  git add $* ; git status -s ; gl ; }
+gau() { git add -u $* ; git status -s ; gl ; }
+gac() { git add $* ; git status -s ; gc ; }
+
+gc() { git commit ; line_break ; gl ; }
+
+ghash() { git_clip_commit_hash ; }  # maybe shortcut instead ?
+
+# LOGS
+## pretty formats
+git_log_default_format='%C(auto,yellow)%h - %C(auto,blue)%>(14,trunc) %cd - %C(auto,reset)%s%C(auto,cyan)% gD% D'
+git_log_alternative_format='%C(auto,yellow)%h - %C(auto,cyan) %cd %C(auto,reset) - %s%C(auto,cyan)% gD% D'
+git_log_forGraph_format='%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s'
+
+## git log all
+gla() { git log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' ; }
+
+## recent - last 10
+gl() {  git log --pretty=format:"$git_log_default_format" --abbrev-commit --date=relative -10 ; }
+
+## git log tree
+glt() { git log --graph --full-history --all --color --pretty=format:"$git_log_forGraph_format" ; }
+
+## git log 2 - full date and last 10
+gl2() { git log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' -10 ; } # color tweeks
+
+# STASH
+gstal() { git stash list ; }
+gstas() { git stash save $* ; git stash list ; line_brak ; git status -s ; }
+
+## git stash pop
+gstap() {
+  local stashid
+  is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
+  git stash pop -q "$stashid" &&
+  line_brak &&
+  git stash list &&
+  line_brak &&
+  git status -s
+}
+
+## git stash show
+gstashow() {
+  local stashid
+  is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
+  git stash show "$stashid"
+}
+
+# FUNCTIONS
+git_clip_status() {                   ## for key binding
+    eval $( is_in_git_repo && git status --short | fzf +s -x -m | awk '{print $2}' | clip.exe )
+}
+
+git_clip_commit_msg() {               ## for key binding
+    eval $( is_in_git_repo && git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f2- | clip.exe )
+}
+
+git_clip_commit_hash() {
+    eval $( is_in_git_repo && git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f1 | clip.exe )
+}

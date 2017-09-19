@@ -50,8 +50,6 @@ else
 fi
 
 ######################################################################### SYMLINKS #######
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 ## DRIVES
 `rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
 `rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
@@ -63,7 +61,16 @@ echo "${_PROMPT}${_TASK}${_TICK} Symlinked main drives."
 echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
 
 ##################################################################### SYMLINKS CFGS ####
-# ln -sf ${BASEDIR}/zshrc ~/.zshrc
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+## GIT
+ln -sf ${BASEDIR}/git/.rc_git  ~
+ln -sf ${BASEDIR}/git/.gitconfig  ~
+echo "${_PROMPT}${_TASK}${_TICK} Symlinked git configs."
+
+## BASH
+ln -sf ${BASEDIR}/bash/.bashrc  ~
+echo "${_PROMPT}${_TASK}${_TICK} Symlinked bash configs."
 
 ######################################################################### FOOTER #######
 echo "-------------------------------------------------------------------- [ END ] ----"
