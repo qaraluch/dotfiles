@@ -48,30 +48,53 @@ if [ ! -d $HOME/.fzf  ]; then
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of fzf. Already installed!"
 fi
+#################################################################### DEV INSTALLS #####
+echo "${_PROMPT}${_TASK} Installation node.js..."
+if [ ! -f /usr/bin/node  ]; then
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  sudo npm install npm --global
+  echo "${_PROMPT}${_TASK}${_TICK} Installed node.js."
+else
+  echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of node.js. Already installed!"
+fi
 
 ######################################################################### SYMLINKS #######
-## DRIVES
-`rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
-`rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
-`rm -rf $HOME/h` && `ln -sf /mnt/h $HOME/h`
-echo "${_PROMPT}${_TASK}${_TICK} Symlinked main drives."
+read -p "${_PROMPT}${_TASK} Do you sourced .dotfiles-cfg file ? " -n 1 -r
+echo  # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  ## DRIVES
+  `rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
+  `rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
+  `rm -rf $HOME/h` && `ln -sf /mnt/h $HOME/h`
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked main drives."
 
-## DIRS
-`rm -rf $HOME/whome` && `ln -sf $_DOTFILES_WINHOME $HOME/whome`       # see dotfiles-cfg/.dotfiles-config
-echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
+  ## DIRS
+  `rm -rf $HOME/whome` && `ln -sf $_DOTFILES_WINHOME $HOME/whome`       # see dotfiles-cfg/.dotfiles-config
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
 
-##################################################################### SYMLINKS CFGS ####
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  ##################################################################### SYMLINKS CFGS ####
+  BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-## GIT
-ln -sf ${BASEDIR}/git/.rc_git  ~
-ln -sf ${BASEDIR}/git/.gitconfig  ~
-echo "${_PROMPT}${_TASK}${_TICK} Symlinked git configs."
+  ## GIT
+  ln -sf ${BASEDIR}/git/.rc_git  ~
+  ln -sf ${BASEDIR}/git/.gitconfig  ~
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked git configs."
 
-## BASH
-ln -sf ${BASEDIR}/bash/.bashrc  ~
-echo "${_PROMPT}${_TASK}${_TICK} Symlinked bash configs."
+  ## BASH
+  ln -sf ${BASEDIR}/bash/.bashrc  ~
+  ln -sf ${BASEDIR}/bash/.inputrc  ~
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked bash configs."
 
+  ## ZSH
+  ln -sf ${BASEDIR}/zsh/.zshrc  ~
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked zsh configs."
+
+  ######################################################################### MANUAL #######
+  ## HYPER
+  echo "${_PROMPT}${_TASK}${_CROSS} Not symlinked hyper configs."
+  echo "${_PROMPT}${_TASK}${_C_YELLOW} Please do it manually. See: personal notes (hyperjs.md) for command snippet.${_C_END}"
+  fi
 ######################################################################### FOOTER #######
 echo "-------------------------------------------------------------------- [ END ] ----"
 _empty_line
