@@ -9,13 +9,13 @@ export ZSH=/home/ag/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell" # default
 # ZSH_THEME="agnoster" # font display problem
-ZSH_THEME="norm" # font display problem
+ZSH_THEME="norm"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=()
+plugins=(git-prompt)
 source $ZSH/oh-my-zsh.sh
 
 # FZF
@@ -23,6 +23,9 @@ source $ZSH/oh-my-zsh.sh
 
 # mygit
 [ -f ~/.rc_git ] && source ~/.rc_git
+
+# rc_globals
+[ -f ~/.rc_globals ] && source ~/.rc_globals
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
