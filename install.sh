@@ -3,6 +3,7 @@
 ######################################################################### UTILS ########
 _C_GREEN=$'\033[1;32m'
 _C_YELLOW=$'\033[1;33m'
+_C_RED=$'\033[0;31m'
 _C_END=$'\033[0m'
 _PROMPT="[ dotfiles ]"
 _TASK="[ install ]"
@@ -13,9 +14,9 @@ _empty_line() {
 }
 
 ######################################################################### WELCOME ######
-echo "---------------------------------------------------------------------------------"
+echo "------------------------------------------------------------------------------------------------"
 echo "${_PROMPT}                                                        by qaraluch"
-echo "---------------------------------------------------------------------------------"
+echo "------------------------------------------------------------------------------------------------"
 
 ######################################################################### UPDATES ######
 echo "${_PROMPT} About to run sys updates..."
@@ -60,9 +61,15 @@ else
 fi
 
 ######################################################################### SYMLINKS #######
-read -p "${_PROMPT}${_TASK} Do you sourced .dotfiles-cfg file ? " -n 1 -r
-echo  # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+echo "${_PROMPT}${_TASK} Checking if .dotfiles-cfg-(...) file is sourced beforehand ?"
+if [ -z ${_DOTFILES_WHOIS+x} ]; then
+  echo "${_PROMPT}${_TASK}${_C_RED}[ ERROR ] Not sourced .dotfiles-cfg. Terminating rest of the script!${_C_END}"
+  echo "-------------------------------------------------------------------- [ END ] -------------------"
+  _empty_line
+  exit 1
+else
+  echo "${_PROMPT}${_TASK}[ TEST ] Sourced cfg: ${_C_YELLOW}${_DOTFILES_WHOIS}${_C_END}"
+
   ## DRIVES
   `rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
   `rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
@@ -97,7 +104,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ## HYPER
   echo "${_PROMPT}${_TASK}${_CROSS} Not symlinked hyper configs."
   echo "${_PROMPT}${_TASK}${_C_YELLOW} Please do it manually. See: personal notes (hyperjs.md) for command snippet.${_C_END}"
-  fi
+fi
 ######################################################################### FOOTER #######
-echo "-------------------------------------------------------------------- [ END ] ----"
+echo "-------------------------------------------------------------------- [ END ] -------------------"
 _empty_line
