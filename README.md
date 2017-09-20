@@ -6,6 +6,8 @@ by qaraluch
 Before runing main install script you need to review configuration repo and install it. 
 See your target dotfiles-cfg-(...) regpo for further instructions. 
 
+After sourcing dotfile's config launch installation proces:
+ 
 ### Using symlink
 `rm -rf $HOME/.dotfiles-source && ln -sf $_DOTFILES_SOURCE $HOME/.dotfiles-source` # see dotfiles-cfg/.dotfiles-config
 

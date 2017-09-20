@@ -17,6 +17,11 @@ ZSH_THEME="norm"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git-prompt)
 
+# ZSH
+[ -f ~/.zshrc_opts ] && source ~/.zshrc_opts
+[ -f ~/.zshrc_utils ] && source ~/.zshrc_utils
+[ -f ~/.zshrc_aliases ] && source ~/.zshrc_aliases
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

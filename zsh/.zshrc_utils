@@ -1,0 +1,33 @@
+# COLORS
+export C_RED=$'\033[0;31m'
+export C_GREEN=$'\033[1;32m'
+export C_YELLOW=$'\033[1;33m'
+export C_BLUE=$'\033[1;34m'
+export C_MAGNETA=$'\033[1;35m'
+export C_CYAN=$'\033[1;36m'
+export C_END=$'\033[0m'               # End
+
+# ICONS
+export I_TICK="[ ${C_GREEN}✔${C_END} ]"
+export I_CROSS="[ ${_C_YELLOW}✖${_C_END} ]"
+
+# FOR DISPLAYS
+line_break() {
+  echo " "
+}
+export line_break
+
+# CHECKS
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+# SYS
+## normal paths conversion (not /mnt/c/)
+convertpath2dos() { echo $1 | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/' ; }  #to_win
+convertpath2unix() { echo "/"$1 | sed -e 's/\\/\//g' -e 's/://' ; } #to_bash
+export convertpath2dos
+export convertpath2unix
+
+
+

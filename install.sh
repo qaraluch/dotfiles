@@ -88,6 +88,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
   ## ZSH
   ln -sf ${BASEDIR}/zsh/.zshrc  ~
+  ln -sf ${BASEDIR}/zsh/.zshrc_opts  ~
+  ln -sf ${BASEDIR}/zsh/.zshrc_utils  ~
+  ln -sf ${BASEDIR}/zsh/.zshrc_aliases  ~
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked zsh configs."
 
   ######################################################################### MANUAL #######
