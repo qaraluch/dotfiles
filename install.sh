@@ -98,6 +98,7 @@ else
   ln -sf ${BASEDIR}/zsh/.zshrc_opts  ~
   ln -sf ${BASEDIR}/zsh/.zshrc_utils  ~
   ln -sf ${BASEDIR}/zsh/.zshrc_aliases  ~
+  ln -sf ${BASEDIR}/zsh/.zshrc_fns  ~
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked zsh configs."
 
   ######################################################################### MANUAL #######
