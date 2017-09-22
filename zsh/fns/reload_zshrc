@@ -1,0 +1,5 @@
+# dependency .zshrc_utils
+reload_zshrc() {
+  source ~/.zshrc
+  echo "${I_TICK} Reloaded ${C_YELLOW}.zshrc${C_END} file!"
+}
