@@ -1,3 +1,5 @@
+export PATH=$HOME/.bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/ag/.oh-my-zsh
 
@@ -19,10 +21,24 @@ plugins=(git-prompt)
 
 # ZSH
 [ -f ~/.zshrc_opts ] && source ~/.zshrc_opts
+[ -f ~/.zshrc_utils ] && source ~/.zshrc_test
 [ -f ~/.zshrc_utils ] && source ~/.zshrc_utils
-[ -f ~/.zshrc_aliases ] && source ~/.zshrc_aliases
 
-# FZF
+#  source fns and utils
+for function in ~/.dotfiles-source/zsh/fns/*; do
+  source $function
+done
+
+for function in ~/.dotfiles-source/zsh/utils/*; do
+  source $function
+done
+
+# MENUS
+for function in ~/.dotfiles-source/menus/matv/*; do
+  source $function
+done
+
+# original FZF cfg
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # mygit
@@ -39,8 +55,6 @@ HIST_STAMPS="yyyy-mm-dd"
 source $ZSH/oh-my-zsh.sh
 
 # --- ORG CFG ------
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
