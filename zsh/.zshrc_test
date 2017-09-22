@@ -1,0 +1,56 @@
+# COMMONLY USED PATHS
+myatv() { cd $D_MYATV ; }
+
+
+# COMMON
+e() { exit ; }
+reload() { reload_zshrc ; }       # zsh/fns
+t(){ touch $1 ; echo "${I_TICK} Touched new file: "$1 ; ls ; }
+h() { history ; }
+hr() { history | tail -n 20 ; }
+v() { vim $@ ; }
+mv() { command mv -i -v $@ ; }
+cp() { command cp -i -v -rf $@ ; }
+ln() { command ln -i -v $@ ; }
+
+# add ex
+
+
+################################################################################# HISTORY BACKUP
+# //TODO#dev#bash: move history mgmts to bash-utils
+## history backup
+# bash_history_backup() {
+# grep -v "^#" $HISTFILE | awk '!a[$0]++' > $F_HISTORY_BACKUP ; # $HISTFILE is system file
+# cat $F_HISTORY_BACKUP > $F_HISTORY_BACKUP2 ;
+# echo "${I_TICK} Copied bash history -> '$F_HISTORY_BACKUP2'"
+# }
+
+# ## history bring
+# bash_history_bring() {
+# cat $F_HISTORY_BACKUP2 > $HISTFILE ;
+# history -c ;  history -r ;
+# echo "${I_TICK} Restored .bash-history from mybashrc"
+# }
+
+
+# CHECKS
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+# SYS
+## normal paths conversion (not /mnt/c/)
+convertpath2dos() { echo $1 | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/' ; }  #to_win
+convertpath2unix() { echo "/"$1 | sed -e 's/\\/\//g' -e 's/://' ; } #to_bash
+export convertpath2dos
+export convertpath2unix
+
+
+
+# vim bindings
+# bindkey -v
+
+# bind UP and DOWN arrow keys for history search
+# zmodload zsh/terminfo
+# bindkey "$terminfo[kcuu1]" history-substring-search-up
+# bindkey "$terminfo[kcud1]" history-substring-search-down

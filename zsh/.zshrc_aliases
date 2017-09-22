@@ -1,4 +1,0 @@
-# COMMONLY USED PATHS
-myatv() { cd $D_MYATV ; }
-
-

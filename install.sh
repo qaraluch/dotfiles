@@ -60,7 +60,7 @@ else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of node.js. Already installed!"
 fi
 
-######################################################################### SYMLINKS #######
+######################################################################### CONDITION #######
 echo "${_PROMPT}${_TASK} Checking if .dotfiles-cfg-(...) file is sourced beforehand ?"
 if [ -z ${_DOTFILES_WHOIS+x} ]; then
   echo "${_PROMPT}${_TASK}${_C_RED}[ ERROR ] Not sourced .dotfiles-cfg. Terminating rest of the script!${_C_END}"
@@ -70,18 +70,21 @@ if [ -z ${_DOTFILES_WHOIS+x} ]; then
 else
   echo "${_PROMPT}${_TASK}[ TEST ] Sourced cfg: ${_C_YELLOW}${_DOTFILES_WHOIS}${_C_END}"
 
+  ######################################################################### SYMLINKS #######
+  BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   ## DRIVES
-  `rm -rf $HOME/c` && `ln -sf /mnt/c $HOME/c`
-  `rm -rf $HOME/g` && `ln -sf /mnt/g $HOME/g`
-  `rm -rf $HOME/h` && `ln -sf /mnt/h $HOME/h`
+  rm -rf $HOME/c && ln -sf /mnt/c $HOME/c
+  rm -rf $HOME/g && ln -sf /mnt/g $HOME/g
+  rm -rf $HOME/h && ln -sf /mnt/h $HOME/h
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked main drives."
 
   ## DIRS
-  `rm -rf $HOME/whome` && `ln -sf $_DOTFILES_WINHOME $HOME/whome`       # see dotfiles-cfg/.dotfiles-config
+  rm -rf $HOME/whome && ln -sf $_DOTFILES_WINHOME $HOME/whome       # see dotfiles-cfg/.dotfiles-config
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
+  rm -rf $HOME/bin && ln -sf ${BASEDIR}/bin  ~/.bin
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked bin dir."
 
   ##################################################################### SYMLINKS CFGS ####
-  BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
   ## GIT
   ln -sf ${BASEDIR}/git/.rc_git  ~
@@ -97,8 +100,7 @@ else
   ln -sf ${BASEDIR}/zsh/.zshrc  ~
   ln -sf ${BASEDIR}/zsh/.zshrc_opts  ~
   ln -sf ${BASEDIR}/zsh/.zshrc_utils  ~
-  ln -sf ${BASEDIR}/zsh/.zshrc_aliases  ~
-  ln -sf ${BASEDIR}/zsh/.zshrc_fns  ~
+  ln -sf ${BASEDIR}/zsh/.zshrc_test  ~
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked zsh configs."
 
   ######################################################################### MANUAL #######
