@@ -1,8 +1,15 @@
+# SYS
+setopt AUTO_CD                              # Sends cd commands without the need for 'cd'
+setopt vi
+
 # EDITORS
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # FZF
 export FZF_DEFAULT_COMMAND='find * ""'
-# export FZF_DEFAULT_OPTS='--reverse'
 
+# HISTORY
+setopt INC_APPEND_HISTORY                   # Add commands to history as they are typed, don't wait until shell exit
+setopt HIST_REDUCE_BLANKS                   # Remove extra blanks from each command line being added to history
+HISTORY_IGNORE="(l|h|hr|ls|cd|pwd|exit|cd*|..|...|ex|hr|e|ex)"
