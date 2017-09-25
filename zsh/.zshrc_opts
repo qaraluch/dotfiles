@@ -33,4 +33,5 @@ LS_COLORS='ow=01;36;40'                                 # better dir colors
 #   * `C+G` - escape from search mode
 bindkey -e
 bindkey -s '^ ' 'git status --short^M'                  # C+SPACE - git status
-bindkey '^N' '_my_zle_widget_mygit_get_status_item'     # C+N - clip git status item; see: .rc_git
+bindkey '^N' '_my_zle_widget_mygit_get_status_item'     # C+N - get & clip git status item; see: .rc_git
+bindkey '\es' '_my_zle_widget_myfzf_get_dir'            # A+S - get & clip git status item; see: fns/myfzf_get_dir

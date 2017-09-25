@@ -1,3 +1,2 @@
 # bindkey -s '^[h' 'terefere....'              # escepae+h lub ctrl+[+h - clip git status
-# bindkey -s '^[h' 'terefere....'              # escepae+h lub ctrl+[+h - clip git status
-
+# bindkey -s '\eh' 'terefere....'              # escepae+h lub alt+h - clip git status

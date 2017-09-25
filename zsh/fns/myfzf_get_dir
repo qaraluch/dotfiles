@@ -1,0 +1,16 @@
+# dependency fzf
+myfzf_get_dir() {
+  local cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+    -o -type d -print 2> /dev/null | cut -b3-"}"
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +s -x)"
+  echo $dir
+
+}
+# zsh widget:
+function _my_zle_widget_myfzf_get_dir {
+    local  res="$(myfzf_get_dir)"
+    zle -M "$(clip $res)"
+    zle -U "$res"
+    zle redisplay
+}
+zle -N _my_zle_widget_myfzf_get_dir
