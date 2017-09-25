@@ -28,6 +28,7 @@ alias g='mygit'                                     # .rc_git
 alias gs='mygit_status'                             # .rc_git
 alias gp='mygit_push $@'                            # .rc_git
 alias gc='mygit_commit $@'                          # .rc_git
+alias gd='git diff $@'
 alias ga='mygit_add $@'                             # .rc_git
 alias gau='mygit_add_update $@'                     # .rc_git
 alias gac='mygit_add_and_commit $@'                 # .rc_git
