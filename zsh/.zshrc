@@ -17,7 +17,8 @@ ZSH_THEME="norm"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git-prompt)
+# plugins=(git-prompt) # to slow
+plugins=()
 
 # ZSH
 [ -f ~/.zshrc_opts ] && source ~/.zshrc_opts
@@ -38,9 +39,6 @@ for function in ~/.dotfiles-source/menus/matv/*; do
   source $function
 done
 
-# original FZF cfg
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # mygit
 [ -f ~/.rc_git ] && source ~/.rc_git
 
@@ -53,6 +51,9 @@ done
 HIST_STAMPS="yyyy-mm-dd"
 
 source $ZSH/oh-my-zsh.sh
+
+# original FZF cfg
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # --- ORG CFG ------
 
