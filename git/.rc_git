@@ -1,72 +1,100 @@
-g() {
+mygit() {
     if [[  $# -eq 0 ]]; then
-      gs
+      mygit_status
     else
       git $*
     fi
 }
 
-gs() { git status -s -u ; }
-gd() { git diff $* ; }
-gp() { git push $* ; line_break ; gl ; }
+mygit_status() { git status -s -u ; }
+mygit_push() { git push $* ; line_break ; mygit_log_recent ; }
 
-ga() {  git add $* ; git status -s ; gl ; }
-gau() { git add -u $* ; git status -s ; gl ; }
-gac() { git add $* ; git status -s ; gc ; }
+mygit_commit() { git commit ; line_break ; mygit_log_recent ; }
 
-gc() { git commit ; line_break ; gl ; }
+mygit_add() {  git add $* ; git status -s ; mygit_log_recent ; }
+mygit_add_update() { git add -u $* ; git status -s ; mygit_log_recent ; }
+mygit_add_and_commit() { git add $* ; git status -s ; mygit_commit ; }
 
-ghash() { git_clip_commit_hash ; }  # maybe shortcut instead ?
+mygit_clip_hash() { clip $(mygit_get_commit_hash) ; }
+mygit_clip_msg() { clip $(mygit_get_commit_msg) ; }
 
-# LOGS
 ## pretty formats
 git_log_default_format='%C(auto,yellow)%h - %C(auto,blue)%>(14,trunc) %cd - %C(auto,reset)%s%C(auto,cyan)% gD% D'
 git_log_alternative_format='%C(auto,yellow)%h - %C(auto,cyan) %cd %C(auto,reset) - %s%C(auto,cyan)% gD% D'
 git_log_forGraph_format='%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s'
 
-## git log all
-gla() { git log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' ; }
+mygit_log_recent() {  git --no-pager log --pretty=format:"$git_log_default_format" --abbrev-commit --date=relative -10 ; }
+mygit_log_all() { git log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' ; }
+mygit_log_tree() { git log --graph --full-history --all --color --pretty=format:"$git_log_forGraph_format" ; }
+mygit_log_full_date() { git --no-pager log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' -10 ; } # color tweeks
 
-## recent - last 10
-gl() {  git --no-pager log --pretty=format:"$git_log_default_format" --abbrev-commit --date=relative -10 ; }
-
-## git log tree
-glt() { git log --graph --full-history --all --color --pretty=format:"$git_log_forGraph_format" ; }
-
-## git log 2 - full date and last 10
-gl2() { git --no-pager log --pretty=format:"$git_log_alternative_format" --abbrev-commit --date=format:'%Y-%m-%d %a %H:%M:%S' -10 ; } # color tweeks
-
-# STASH
-gstal() { git stash list ; }
-gstas() { git stash save $* ; git stash list ; line_brak ; git status -s ; }
-
-## git stash pop
-gstap() {
+mygit_stash_ls() { git stash list ; }
+mygit_stash_save() { git stash save $* ; git stash list ; line_break ; git status -s ; }
+mygit_stash_pop() {
   local stashid
   is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
   git stash pop -q "$stashid" &&
-  line_brak &&
+  line_break &&
   git stash list &&
-  line_brak &&
+  line_break &&
   git status -s
 }
-
-## git stash show
-gstashow() {
+mygit_stash_show() {
   local stashid
   is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
   git stash show "$stashid"
 }
 
-# FUNCTIONS
-git_clip_status() {                   ## for key binding
-    eval $( is_in_git_repo && git status --short | fzf +s -x -m | awk '{print $2}' | clip.exe )
+mygit_get_status_item() {
+    local res=$(git status --short | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS" fzf +s -x -m | awk '{print $2}')
+    echo $res
 }
+# zsh widget:
+function _my_zle_widget_mygit_get_status_item {
+  if is_in_git_repo ; then
+    local  res="$(mygit_get_status_item)"
+    zle -M "$(clip $res)"
+    zle -U "$res"
+    zle redisplay
+  else
+    echo "" ;
+    zle -M "Sorry. Not in git repo!"
+  fi
+}
+zle -N _my_zle_widget_mygit_get_status_item
 
-git_clip_commit_msg() {               ## for key binding
-    eval $( is_in_git_repo && git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f2- | clip.exe )
+mygit_get_commit_msg() {
+    local res=$(git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f2-)
+    echo $res
 }
+# zsh widget:
+function _my_zle_widget_mygit_get_commit_msg {
+  if is_in_git_repo ; then
+    local  res="$(mygit_get_commit_msg)"
+    zle -M "$(clip $res)"
+    zle -U "$res"
+    zle redisplay
+  else
+    echo "" ;
+    zle -M "Sorry. Not in git repo!"
+  fi
+}
+zle -N _my_zle_widget_mygit_get_commit_msg
 
-git_clip_commit_hash() {
-    eval $( is_in_git_repo && git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f1 | clip.exe )
+mygit_get_commit_hash() {
+  local res=$(git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f1)
+  echo $res
 }
+# zsh widget:
+function _my_zle_widget_mygit_get_commit_hash {
+  if is_in_git_repo ; then
+    local  res="$(mygit_get_commit_hash)"
+    zle -M "$(clip $res)"
+    zle -U "$res"
+    zle redisplay
+  else
+    echo "" ;
+    zle -M "Sorry. Not in git repo!"
+  fi
+}
+zle -N _my_zle_widget_mygit_get_commit_hash
