@@ -64,7 +64,7 @@ function _my_zle_widget_mygit_get_status_item {
 zle -N _my_zle_widget_mygit_get_status_item
 
 mygit_get_commit_msg() {
-    local res=$(git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f2-)
+    local res=$(git log --pretty=oneline --abbrev-commit | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS" fzf +s -x | cut -d " " -f2-)
     echo $res
 }
 # zsh widget:
@@ -82,7 +82,7 @@ function _my_zle_widget_mygit_get_commit_msg {
 zle -N _my_zle_widget_mygit_get_commit_msg
 
 mygit_get_commit_hash() {
-  local res=$(git log --pretty=oneline --abbrev-commit | fzf +s -x | cut -d " " -f1)
+  local res=$(git log --pretty=oneline --abbrev-commit | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS" fzf +s -x | cut -d " " -f1)
   echo $res
 }
 # zsh widget:
