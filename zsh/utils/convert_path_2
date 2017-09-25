@@ -1,0 +1,3 @@
+# normal paths conversion (not /mnt/c/)
+convertpath2dos() { echo $1 | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/' ; }  #to_win
+convertpath2unix() { echo "/"$1 | sed -e 's/\\/\//g' -e 's/://' ; } #to_bash

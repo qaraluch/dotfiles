@@ -1,0 +1,4 @@
+# windows clipboard
+clip_it() {
+  echo $@ | clip.exe
+}

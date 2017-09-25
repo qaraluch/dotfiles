@@ -1,0 +1,5 @@
+touch_better() {
+  touch $1
+  echo "${I_TICK} Touched new file: "$1
+  ls
+}
