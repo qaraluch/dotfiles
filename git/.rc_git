@@ -54,7 +54,7 @@ function _my_zle_widget_mygit_get_status_item {
   if is_in_git_repo ; then
     local  res="$(mygit_get_status_item)"
     zle -M "$(clip $res)"
-    zle -U "$res"
+    # zle -U "$res"
     zle redisplay
   else
     echo "" ;
@@ -72,7 +72,7 @@ function _my_zle_widget_mygit_get_commit_msg {
   if is_in_git_repo ; then
     local  res="$(mygit_get_commit_msg)"
     zle -M "$(clip $res)"
-    zle -U "$res"
+    # zle -U "$res"
     zle redisplay
   else
     echo "" ;
@@ -90,7 +90,7 @@ function _my_zle_widget_mygit_get_commit_hash {
   if is_in_git_repo ; then
     local  res="$(mygit_get_commit_hash)"
     zle -M "$(clip $res)"
-    zle -U "$res"
+    # zle -U "$res"
     zle redisplay
   else
     echo "" ;
@@ -98,3 +98,5 @@ function _my_zle_widget_mygit_get_commit_hash {
   fi
 }
 zle -N _my_zle_widget_mygit_get_commit_hash
+
+# //TODO: fix zle -U command; not working with multiselections
