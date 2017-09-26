@@ -1,6 +1,6 @@
 #!/bin/bash
 # MAIN
-menu_atv() {
+atv_menu() {
     if [[ $1 == "add" && $2 == "new" ]]; then
       atv_add_new $3
     elif [[ $1 == "show" && $2 == "memos" && $3 == "-g" ]]; then
@@ -19,44 +19,43 @@ _ATV_PROMPT="[ ATV ]"
 _ATV_TICK="[ ${C_GREEN}✔${C_END} ]"
 
 # HELP
-_atv_help_header(){
+atv_help_header(){
   echo "${_ATV_PROMPT} [HELP] ----------------------------------------------------"
   echo "Usage: "
 }
 
-_atv_help_footer(){
+atv_help_footer(){
   echo "${_ATV_PROMPT} -----------------------------------------------------------"
 }
 
 _atv_run_help() {
-  _atv_help_header
-  _atv_help_add_new
-  _atv_help_show_memos
-  _atv_help_show_memos_grep
-  _atv_help_footer
+  atv_help_header
+  atv_help_add_new
+  atv_help_show_memos
+  atv_help_show_memos_grep
+  atv_help_footer
   # line_break
 }
 
 # FUNCTIONS
 atv_add_new() {
-  bash $F_SCRIPT_ATV_NEW_TOPIC $1               # see .bashrc_globals
+  atv_menu_new_topic $1
 }
-_atv_help_add_new() {
+atv_help_add_new() {
   echo "    - atv ${C_YELLOW}add new${C_END} [fileName (without .md)] - add new atv file note"
 }
 
 atv_show_memos() {
-  command less $F_ATV_MEMOS                     # see .bashrc_globals
+  command less $F_MYATV_MEMOS                     # see .rc_globals
 }
-_atv_help_show_memos() {
+atv_help_show_memos() {
   echo "    - atv ${C_YELLOW}show memos${C_END}                       - show memos file"
 }
 
-
 atv_show_memos_grep() {
-  command cat $F_ATV_MEMOS | grep $1 | less     # see .bashrc_globals
+  command cat $F_MYATV_MEMOS | grep $1 | less     # see .rc_globals
 }
-_atv_help_show_memos_grep() {
+atv_help_show_memos_grep() {
   echo "    - atv ${C_YELLOW}show memos -g${C_END} [word]             - show memos file + grep"
 }
 

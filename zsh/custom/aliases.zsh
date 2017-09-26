@@ -42,3 +42,8 @@ alias gsta='mygit_stash_ls'                         # .rc_git
 alias gstas='mygit_stash_save'                      # .rc_git
 alias gstap='mygit_stash_pop'                       # .rc_git
 alias gstas='mygit_stash_show'                      # .rc_git
+
+# atv menu
+alias atv='atv_menu $@'                             # menus/atv
+
+

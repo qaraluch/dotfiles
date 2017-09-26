@@ -2,6 +2,8 @@
 # for:
 # atv-menu.sh
 
+# //TODO: not reimplemented; need refactoring
+
 atv_new_dbtc_no_free_dopamine () {
   GLOBAL_PATH_NO_FREE_DOPAMINE="${D_ATV_NO_FREE_DOPAMINE}/"
 

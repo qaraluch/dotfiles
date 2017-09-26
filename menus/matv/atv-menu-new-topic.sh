@@ -3,11 +3,6 @@
 # atv-menu.sh
 
 atv_menu_new_topic() {
-  # UTILS
-  _ATV_PROMPT="[ ATV ]"
-  _ATV_TICK="[ ${C_GREEN}✔${C_END} ]"    # see .bashrc_utils
-  _D_ATV="${D_ATV}/"                      # see .bashrc_globals
-
   # ARGS
   TOPIC=$1
   if [ -z "$1" ] ; then
@@ -16,7 +11,7 @@ atv_menu_new_topic() {
   fi
 
   FILENAME="${TOPIC}.md"
-  APATH_BASH="${_D_ATV}${FILENAME}"
+  APATH_BASH="${D_MYATV}/${FILENAME}"
   touch ${APATH_BASH}
   echo "${FILENAME}" | clip.exe # file name to clipboard
 
@@ -38,5 +33,5 @@ atv_menu_new_topic() {
   MSG_OPENING="${_ATV_PROMPT} Opening file in ST3: ${C_YELLOW}${SUBLPATH_TOSHOW}${C_END}\n"   # see .bashrc_utils
   printf "$MSG_OPENING"
   sleep 1
-  subl.exe ${SUBLPATH}
+  subl ${SUBLPATH}
 }
