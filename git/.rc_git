@@ -46,7 +46,7 @@ mygit_stash_show() {
 }
 
 mygit_get_status_item() {
-    local res=$(git status --short | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS" fzf +s -x -m | awk '{print $2}')
+    local res=$(git status --short | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS" fzf +s -x -m --tac | awk '{print $2}')
     echo $res
 }
 # zsh widget:
