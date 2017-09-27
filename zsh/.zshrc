@@ -57,6 +57,10 @@ local b="antigen-bundle"
 
 # Syntax highlighting on the readline
 $b zsh-users/zsh-syntax-highlighting
+$b urbainvaes/fzf-marks
+
+# Tell antigen that you're done.
+antigen apply
 
 source $ZSH/oh-my-zsh.sh
 
