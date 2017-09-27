@@ -46,4 +46,11 @@ alias gstas='mygit_stash_show'                      # .rc_git
 # atv menu
 alias atv='atv_menu $@'                             # menus/atv
 
+# fzf-marks
+alias m='mark $@'
+alias dm='dmark $@'
+alias j='jump'                                      # or C+G
+
+
+
 
