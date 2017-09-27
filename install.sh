@@ -41,6 +41,9 @@ else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of oh-my-zsh. Already installed!"
 fi
 
+echo "${_PROMPT}${_TASK} Installation zsh antigen"
+sudo apt -qq install zsh-antigen
+
 echo "${_PROMPT}${_TASK} Installation fzf..."
 if [ ! -d $HOME/.fzf  ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf

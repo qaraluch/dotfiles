@@ -50,6 +50,14 @@ done
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
+### ANTIGEN
+# antigen time!
+source /usr/share/zsh-antigen/antigen.zsh
+local b="antigen-bundle"
+
+# Syntax highlighting on the readline
+$b zsh-users/zsh-syntax-highlighting
+
 source $ZSH/oh-my-zsh.sh
 
 # original FZF cfg
