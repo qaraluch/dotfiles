@@ -3,6 +3,11 @@ KEYTIMEOUT=1
 setopt AUTO_CD                              # Sends cd commands without the need for 'cd'
 setopt vi
                                             # see more: https://github.com/Microsoft/vscode/issues/7556#issuecomment-309307794
+# partial lines problem
+# see: https://superuser.com/questions/645599/why-is-a-percent-sign-appearing-before-each-prompt-on-zsh-in-windows
+# setopt PROMPT_CR
+# setopt PROMPT_SP
+# export PROMPT_EOL_MARK=""
 
 # EDITORS
 export VISUAL=vim
