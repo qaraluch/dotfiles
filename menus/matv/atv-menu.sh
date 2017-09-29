@@ -7,6 +7,8 @@ atv_menu() {
       atv_show_memos_grep $4
     elif [[ $1 == "show" && $2 == "memos" ]]; then
       atv_show_memos $3
+    elif [[ $1 == "show" && $2 == "note" ]]; then
+      atv_show_note $3
     elif [[ $1 == "help" || "-h" ]]; then
       _atv_run_help
     else
@@ -33,6 +35,7 @@ _atv_run_help() {
   atv_help_add_new
   atv_help_show_memos
   atv_help_show_memos_grep
+  atv_help_show_note
   atv_help_footer
   # line_break
 }
@@ -50,6 +53,13 @@ atv_show_memos() {
 }
 atv_help_show_memos() {
   echo "    - atv ${C_YELLOW}show memos${C_END}                       - show memos file"
+}
+
+atv_show_note() {
+  myfzf_get_atv_note | xargs cat | less -FRNX
+}
+atv_help_show_note() {
+  echo "    - atv ${C_YELLOW}show note${C_END}                       - pick and show content of atv note in terminal"
 }
 
 atv_show_memos_grep() {

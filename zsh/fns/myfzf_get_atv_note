@@ -1,0 +1,8 @@
+# dependency fzf
+# for atv menu
+myfzf_get_atv_note() {
+  local cmd="${FZF_ALT_C_COMMAND:-"find $D_MYATV -path '*.md*' 2> /dev/null"}"      #see: .rc_globals
+  local note="$(eval "$cmd" | fzf +s -x)"
+  clip_it $note                                                                     #see zsh/utils
+  echo $note
+}
