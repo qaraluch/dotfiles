@@ -20,7 +20,8 @@ alias cp='cp -i -v -rf $@'
 alias ln='ln -i -v $@'
 
 # editors
-alias subl='subl.exe $@'                            # zsh/fns
+alias su='subl_it $1'                               # zsh/utlis
+alias subl='subl.exe $@'
 alias v='vim $@'
 
 # git

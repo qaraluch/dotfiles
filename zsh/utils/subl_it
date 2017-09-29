@@ -1,0 +1,9 @@
+#!/bin/bash
+# subl but with translation to win path
+# for open file
+
+subl_it() {
+  local WINPATH=$( wslpath -w $1 )
+  # echo $WINPATH
+  subl.exe ${WINPATH}
+}
