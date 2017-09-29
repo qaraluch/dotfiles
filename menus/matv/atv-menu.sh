@@ -9,6 +9,10 @@ atv_menu() {
       atv_show_memos $3
     elif [[ $1 == "show" && $2 == "note" ]]; then
       atv_show_note $3
+    elif [[ $1 == "split" && $2 == "-d" ]]; then
+      atv-import-split-md run -d ${@:3}                       # see dev/...
+    elif [[ $1 == "split" ]]; then
+      atv-import-split-md run ${@:2}                          # see dev/...
     elif [[ $1 == "help" || "-h" ]]; then
       _atv_run_help
     else
@@ -36,11 +40,13 @@ _atv_run_help() {
   atv_help_show_memos
   atv_help_show_memos_grep
   atv_help_show_note
+  atv_help_import_split_md
+  atv_help_import_split_md_dryrun
   atv_help_footer
   # line_break
 }
 
-# FUNCTIONS
+############################################################### DOTFILES scripts
 atv_add_new() {
   atv_menu_new_topic $1
 }
@@ -67,6 +73,15 @@ atv_show_memos_grep() {
 }
 atv_help_show_memos_grep() {
   echo "    - atv ${C_YELLOW}show memos -g${C_END} [word]             - show memos file + grep"
+}
+
+
+############################################################### SYS npm modules
+atv_help_import_split_md() {
+  echo "    - atv ${C_YELLOW}split${C_END} [filePath]                 - split big md files into small subtopics files"
+}
+atv_help_import_split_md_dryrun() {
+  echo "    - atv ${C_YELLOW}split -d${C_END} [filePath]              - as above but dryrun"
 }
 
 
