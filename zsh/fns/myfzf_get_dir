@@ -4,7 +4,6 @@ myfzf_get_dir() {
     -o -type d -print 2> /dev/null | cut -b3-"}"
   local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf +s -x)"
   echo $dir
-
 }
 # zsh widget:
 function _my_zle_widget_myfzf_get_dir {
