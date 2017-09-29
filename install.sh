@@ -31,12 +31,12 @@ echo "${_PROMPT}${_TASK}${_TICK} Done!"
 
 echo "${_PROMPT}${_TASK} Installation dos2unix..."
 sudo apt -qq install dos2unix
-echo "${_PROMPT}${_TASK}${_TICK} Done!"
+[[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Done!"
 
 echo "${_PROMPT}${_TASK} Installation oh-my-zsh..."
 if [ ! -d $HOME/.oh-my-zsh  ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh."
+  [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Installed oh-my-zsh."
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of oh-my-zsh. Already installed!"
 fi
@@ -48,7 +48,7 @@ echo "${_PROMPT}${_TASK} Installation fzf..."
 if [ ! -d $HOME/.fzf  ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
   $HOME/.fzf/install
-  echo "${_PROMPT}${_TASK}${_TICK} Installed fzf."
+  [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Installed fzf."
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of fzf. Already installed!"
 fi
@@ -57,10 +57,22 @@ echo "${_PROMPT}${_TASK} Installation node.js..."
 if [ ! -f /usr/bin/node  ]; then
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   sudo apt-get install -y nodejs
-  sudo npm install npm --global
-  echo "${_PROMPT}${_TASK}${_TICK} Installed node.js."
+  sudo npm install -g npm
+  [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Installed node.js."
 else
   echo "${_PROMPT}${_TASK}${_CROSS} Skiped installation of node.js. Already installed!"
+fi
+
+if [ -f /usr/bin/npm  ]; then
+  echo "${_PROMPT}${_TASK} Installation node.js global packages..."
+  mynpm_global_packages_list=(
+    # v--------------------------------------------------- npm packages
+    rimraf
+  )
+  sudo npm install -g "${mynpm_global_packages_list[@]}"
+  [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Done!"
+else
+    echo "${_PROMPT}${_TASK}${_C_RED}[ ERROR ] Not installed npm!${_C_END}"
 fi
 
 ######################################################################### CONDITION #######
@@ -84,7 +96,7 @@ else
   ## DIRS
   rm -rf $HOME/whome && ln -sf $_DOTFILES_WINHOME $HOME/whome       # see dotfiles-cfg/.dotfiles-config
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked windows home dir."
-  rm -rf $HOME/bin && ln -sf ${BASEDIR}/bin  ~/.bin
+  rm -rf $HOME/.bin && ln -sf ${BASEDIR}/bin  $HOME/.bin
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked bin dir."
 
   ##################################################################### SYMLINKS CFGS ####
