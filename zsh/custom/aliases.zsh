@@ -1,6 +1,9 @@
 # common mys
 alias mya='cd $D_MYATV'                             # .rc_globals
 alias myatv='cd $D_MYATV'                           # .rc_globals
+alias mydev='cd $D_MYDEV'                           # .rc_globals
+alias mygitpub='cd $D_MYGITPUB'                     # .rc_globals
+alias mygitremote='cd $D_MYGITREMOTE'               # .rc_globals
 
 # history
 alias h='history'
