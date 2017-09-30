@@ -43,3 +43,4 @@ bindkey -e
 bindkey -s '^ ' 'git status --short^M'                  # C+SPACE - git status
 bindkey '^N' '_my_zle_widget_mygit_get_status_item'     # C+N - get & clip git status item; see: .rc_git
 bindkey '\es' '_my_zle_widget_myfzf_get_dir'            # A+S - get & clip git status item; see: fns/myfzf_get_dir
+bindkey '\eo' '_my_zle_widget_myfzf_locate_file'        # A+o - locate file

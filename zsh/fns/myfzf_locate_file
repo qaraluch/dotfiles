@@ -1,0 +1,17 @@
+# dependency fzf
+myfzf_locate_file() {
+  local file="$(locate / | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-70%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf -q "$LBUFFER")"
+  clip_it $file
+  echo $file
+}
+# zsh widget:
+function _my_zle_widget_myfzf_locate_file {
+    local res
+    if res=$(myfzf_locate_file); then
+      LBUFFER=$res
+    fi
+    LBUFFER=$res
+    zle redisplay
+}
+zle -N _my_zle_widget_myfzf_locate_file
+
