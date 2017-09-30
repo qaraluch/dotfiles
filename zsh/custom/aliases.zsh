@@ -21,6 +21,8 @@ alias t='touch_better'                              # zsh/fns
 alias mv='mv -i -v $@'
 alias cp='cp -i -v -rf $@'
 alias ln='ln -i -v $@'
+alias udb='updatedb_better'                         # zsh/fn for locate command
+alias rdb='updatedb_remove_dbs'                     # zsh/fn for locate command
 
 # editors
 alias su='subl_it $1'                               # zsh/utlis

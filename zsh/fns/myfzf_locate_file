@@ -1,6 +1,17 @@
 # dependency fzf
 myfzf_locate_file() {
-  local file="$(locate / | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-70%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf -q "$LBUFFER")"
+  local file="$(locate \
+  -d $HOME/.prvdbs/home.db \
+  -d $HOME/.prvdbs/whome.db \
+  -d $HOME/.prvdbs/EP.db \
+  -d $HOME/.prvdbs/atv.db \
+  -d $HOME/.prvdbs/config.db \
+  -d $HOME/.prvdbs/Dropbox.db \
+  -d $HOME/.prvdbs/gallery.db \
+  -d $HOME/.prvdbs/dev.db \
+  -d $HOME/.prvdbs/muza.db \
+    / \
+    | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-70%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" fzf -q "$LBUFFER")"
   clip_it $file
   echo $file
 }
@@ -15,3 +26,4 @@ function _my_zle_widget_myfzf_locate_file {
 }
 zle -N _my_zle_widget_myfzf_locate_file
 
+# locate -d ~/.prvdbs/dev.db / | fzf

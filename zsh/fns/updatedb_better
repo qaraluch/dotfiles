@@ -1,0 +1,30 @@
+# my private updatedb for locale command
+# setup your private dirs!
+updatedb_better() {
+  echo "${I_TICK} About to update all private databases for locate command:"
+  mkdir $HOME/.prvdbs
+  command updatedb -l 0 -U $HOME/ -o $HOME/.prvdbs/home.db
+  echo "${I_TICK} Done: .prvdbs/home.db"
+  command updatedb -l 0 -U $D_WHOME -o $HOME/.prvdbs/whome.db
+  echo "${I_TICK} Done: .prvdbs/whome.db"
+  command updatedb -l 0 -U $D_EP -o $HOME/.prvdbs/EP.db
+  echo "${I_TICK} Done: .prvdbs/EP.db"
+  command updatedb -l 0 -U $D_MYATV -o $HOME/.prvdbs/atv.db
+  echo "${I_TICK} Done: .prvdbs/atv.db"
+  command updatedb -l 0 -U $D_MYCONFIG -o $HOME/.prvdbs/config.db
+  echo "${I_TICK} Done: .prvdbs/config.db"
+  command updatedb -l 0 -U $D_MYDROPBOX -o $HOME/.prvdbs/Dropbox.db
+  echo "${I_TICK} Done: .prvdbs/Dropbox.db"
+  command updatedb -l 0 -U $D_MYGALLERY -o $HOME/.prvdbs/gallery.db
+  echo "${I_TICK} Done: .prvdbs/gallery.db"
+  command updatedb -l 0 -U $D_MYDEV -o $HOME/.prvdbs/dev.db
+  echo "${I_TICK} Done: .prvdbs/dev.db"
+  command updatedb -l 0 -U $D_MYMUZA -o $HOME/.prvdbs/muza.db
+  echo "${I_TICK} Done: .prvdbs/muza.db"
+}
+
+updatedb_remove_dbs() {
+  rm -rf $HOME/.prvdbs
+  echo "${I_TICK} Removed all locate command private databases: .prvdbs/** "
+}
+
