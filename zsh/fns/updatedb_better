@@ -2,7 +2,10 @@
 # setup your private dirs!
 updatedb_better() {
   echo "${I_TICK} About to update all private databases for locate command:"
-  mkdir $HOME/.prvdbs
+  if [ ! -d $HOME/.prvdbs  ]; then
+    mkdir $HOME/.prvdbs
+    [[ $? ]] && echo "${I_TICK} Created ~/.prvdbs dir."
+  fi
   command updatedb -l 0 -U $HOME/ -o $HOME/.prvdbs/home.db
   echo "${I_TICK} Done: .prvdbs/home.db"
   command updatedb -l 0 -U $D_WHOME -o $HOME/.prvdbs/whome.db
