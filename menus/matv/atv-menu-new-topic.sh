@@ -33,5 +33,5 @@ atv_menu_new_topic() {
   MSG_OPENING="${_ATV_PROMPT} Opening file in ST3: ${C_YELLOW}${SUBLPATH_TOSHOW}${C_END}\n"   # see .bashrc_utils
   printf "$MSG_OPENING"
   sleep 1
-  subl ${SUBLPATH}
+  subl_it ${SUBLPATH}
 }
