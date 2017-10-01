@@ -29,8 +29,10 @@ echo "${_PROMPT}${_TASK} Installation zsh..."
 sudo apt -qq install zsh
 echo "${_PROMPT}${_TASK}${_TICK} Done!"
 
-echo "${_PROMPT}${_TASK} Installation dos2unix..."
+echo "${_PROMPT}${_TASK} Installation unix utils... "
 sudo apt -qq install dos2unix
+sudo apt -qq install tree
+sudo apt -qq install zip
 [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Done!"
 
 echo "${_PROMPT}${_TASK} Installation oh-my-zsh..."
