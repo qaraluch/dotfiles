@@ -16,7 +16,7 @@ rm -rf $HOME/.dotfiles-source && ln -sf $_DOTFILES_SOURCE $HOME/.dotfiles-source
 ### Using git
 2. Clone repo:
 ```sh
-git clone --depth 1 <dotfiles-repo> .dotfiles-source
+git clone --depth 1 https://github.com/qaraluch/dotfiles.git .dotfiles-source
 cd !!:$
 bash install.sh
 ```
