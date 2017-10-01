@@ -6,7 +6,6 @@ export C_BLUE=$'\033[1;34m'
 export C_MAGNETA=$'\033[1;35m'
 export C_CYAN=$'\033[1;36m'
 export C_END=$'\033[0m'               # End
-#//TODO: check it out for loading colors - gdzies to było w skryptach ????
 
 # ICONS
 export I_TICK="[ ${C_GREEN}✔${C_END} ]"
