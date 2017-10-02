@@ -17,13 +17,18 @@ atv_menu_new_topic() {
 
   LINE01=""
   LINE02="# ${TOPIC}"
+  LINE03=""
+  LINE04="## to-read"
+  LINE05=""
+  LINE06="## links"
+  LINE07=""
   echo "${LINE01}" >> ${APATH_BASH}
   echo "${LINE02}" >> ${APATH_BASH}
-  # echo "${LINE03}" >> ${APATH_BASH}
-  # echo "${LINE04}" >> ${APATH_BASH}
-  # echo "${LINE05}" >> ${APATH_BASH}
-  # echo "${LINE06}" >> ${APATH_BASH}
-  # echo "${LINE07}" >> ${APATH_BASH}
+  echo "${LINE03}" >> ${APATH_BASH}
+  echo "${LINE04}" >> ${APATH_BASH}
+  echo "${LINE05}" >> ${APATH_BASH}
+  echo "${LINE06}" >> ${APATH_BASH}
+  echo "${LINE07}" >> ${APATH_BASH}
   # echo "${LINE08}" >> ${APATH_BASH}
 
   MSG_ADD="${_ATV_PROMPT}${_ATV_TICK} Added new file to atv\n"
