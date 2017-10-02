@@ -37,6 +37,7 @@ alias gc='mygit_commit $@'                          # .rc_git
 alias gd='git diff $@'
 alias ga='mygit_add $@'                             # .rc_git
 alias gau='mygit_add_update $@'                     # .rc_git
+alias gauc='mygit_add_update_and_commit $@'         # .rc_git
 alias gac='mygit_add_and_commit $@'                 # .rc_git
 alias ghash='mygit_clip_hash'                       # .rc_git
 alias gmsg='mygit_clip_msg'                         # .rc_git
