@@ -21,7 +21,7 @@ setopt INC_APPEND_HISTORY                   # Add commands to history as they ar
 setopt HIST_REDUCE_BLANKS                   # Remove extra blanks from each command line being added to history
 setopt HIST_SAVE_NO_DUPS                    # Don't write duplicate entries in the history file.
 setopt HIST_IGNORE_DUPS                     # Don't record an entry that was just recorded again.
-HISTORY_IGNORE="(l|h|hr|ls|cd|pwd|exit|..|...|ex|hr|e|ex|gs|gd|gl|gc|g|d|1|2|3|4|5|6|7|8|9|j|atv|alias*|my*|dm|m *|gc|gp|gl|gau|gac .|gd|)"
+HISTORY_IGNORE="(l|h|hr|ls|cd|pwd|exit|..|...|ex|hr|e|ex|gs|gd|gl|gc|g|d|1|2|3|4|5|6|7|8|9|j|atv|alias*|my*|dm|m *|gc|gp|gl|gau|gac .|gd|git status --short|)"
 
 # SYLES
 LS_COLORS="ow=01;36;40" && export LS_COLORS # better dir colors
