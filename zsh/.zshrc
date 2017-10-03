@@ -39,6 +39,10 @@ for function in ~/.dotfiles-source/menus/matv/*; do
   source $function
 done
 
+for function in ~/.dotfiles-source/menus/mdev/*; do
+  source $function
+done
+
 # mygit
 [ -f ~/.rc_git ] && source ~/.rc_git
 

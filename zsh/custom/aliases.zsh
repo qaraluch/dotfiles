@@ -50,8 +50,9 @@ alias gstas='mygit_stash_save'                      # .rc_git
 alias gstap='mygit_stash_pop'                       # .rc_git
 alias gstas='mygit_stash_show'                      # .rc_git
 
-# atv menu
-alias atv='atv_menu $@'                             # menus/atv
+# menus
+alias atv='atv_menu $@'                             # menus/matv
+alias dev='dev_menu $@'                             # menus/mdev
 
 # fzf-marks
 alias m='mark $@'
