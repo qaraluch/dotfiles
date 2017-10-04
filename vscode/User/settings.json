@@ -1,2 +1,8 @@
 {
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
+    "workbench.startupEditor": "welcomePage",
+    "editor.minimap.enabled": false,
+    "projectManager.sortList": "Name",
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "material-icon-theme"
 }

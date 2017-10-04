@@ -1,0 +1,12 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "ctrl+shift+D", "command": "editor.action.copyLinesDownAction", "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+l", "command": "expandLineSelection", "when": "editorTextFocus" },
+    { "key": "ctrl+shift+down", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+up", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+k ctrl+t",  "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "ctrl+k ctrl+m",  "command": "workbench.action.toggleMaximizedPanel" },
+    // Project Manager
+    {"key": "ctrl+alt+p", "command": "projectManager.listProjects"},
+    {"key": "shift+alt+p", "command": "projectManager.editProjects"}
+]
