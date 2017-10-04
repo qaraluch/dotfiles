@@ -11,14 +11,22 @@ After sourcing dotfile's config launch installation process by:
 ### Using symlink
 ```sh
 rm -rf $HOME/.dotfiles-source && ln -sf $_DOTFILES_SOURCE $HOME/.dotfiles-source # see dotfiles-cfg/.dotfiles-config
+cd !!:$
+./install.sh
 ```
 
 ### Using git
-2. Clone repo:
+Clone repo:
 ```sh
 git clone --depth 1 https://github.com/qaraluch/dotfiles.git .dotfiles-source
 cd !!:$
-bash install.sh
+./install.sh
+```
+
+## Separate installations
+For installing vscode there is separate installation script:
+```sh
+cd vscode/ && ./install.sh
 ```
 
 ## Credits
