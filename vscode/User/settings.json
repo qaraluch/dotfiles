@@ -4,5 +4,7 @@
     "editor.minimap.enabled": false,
     "projectManager.sortList": "Name",
     "workbench.colorTheme": "Ayu Mirage",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.tabSize": 2,
+    "editor.fontSize": 15,    
 }
