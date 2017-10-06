@@ -20,6 +20,7 @@ alias clip='clip_it $@'
 alias reload='reload_zshrc'                         # zsh/fns
 alias t='touch_better'                              # zsh/fns
 alias mv='mv -i -v $@'
+alias mvt='mv -ivt $@'
 alias cp='cp -i -v -rf $@'
 alias ln='ln -i -v $@'
 alias udb='updatedb_better'                         # zsh/fn for locate command
