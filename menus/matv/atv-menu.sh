@@ -65,7 +65,7 @@ atv_show_note() {
   myfzf_get_atv_note | xargs cat | less -FRNX
 }
 atv_help_show_note() {
-  echo "    - atv ${C_YELLOW}show note${C_END}                       - pick and show content of atv note in terminal"
+  echo "    - atv ${C_YELLOW}show note${C_END}                        - pick and show content of atv note in terminal"
 }
 
 atv_show_memos_grep() {
