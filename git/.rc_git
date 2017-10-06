@@ -9,7 +9,7 @@ mygit() {
 mygit_status() { git status -s -u ; }
 mygit_push() { git push $* ; line_break ; mygit_log_recent ; }
 
-mygit_commit() { git commit ; line_break ; mygit_log_recent ; }
+mygit_commit() { git commit $* ; line_break ; mygit_log_recent ; }
 
 mygit_add() {  git add $* ; git status -s ; mygit_log_recent ; }
 mygit_add_update() { git add -u $* ; git status -s ; mygit_log_recent ; }
