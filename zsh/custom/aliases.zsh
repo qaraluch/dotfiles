@@ -15,6 +15,7 @@ alias hpurge='history_zsh_purge'                    # zsh/fns
 # sys
 alias e='exit'
 alias ex='explorer.exe .'
+alias c='cat $@'
 alias clip='clip_it $@'
 alias reload='reload_zshrc'                         # zsh/fns
 alias t='touch_better'                              # zsh/fns
