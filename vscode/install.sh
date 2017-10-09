@@ -21,12 +21,15 @@ echo "--------------------------------------------------------------------------
 if test "$(which code)"; then
   ######################################################################## SYMLINKS #######
   rm -rf $D_VSCODE
-  # var1="C:\Users\agolawski\AppData\Roaming\Code\User"
-  # var2="G:\config\dotfiles\vscode\User"
   $(cmd.exe /C mklink /J $D_VSCODE_WIN $D_VSCODE_DOTFILES_WIN)
   # error?
   # ./install.sh: line 26: Junction: command not found
   [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Symlinked vscode User dir"
+
+  # symlinking project.json form dotfiles.cfg -> dotfiles !!!
+  rm "$D_VSCODE/projects.json"
+  $(cmd.exe /C mklink $D_VSCODE_PROJECTS_DEST_WIN $D_VSCODE_PROJECTS_SOURCE_WIN)
+  [[ $? ]] && echo "${_PROMPT}${_TASK}${_TICK} Symlinked vscode projects.json to User dir"
 fi
 
 ######################################################################### FOOTER #######
