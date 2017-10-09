@@ -3,6 +3,8 @@
 atv_menu() {
     if [[ $1 == "add" && $2 == "new" ]]; then
       atv_add_new $3
+    elif [[ $1 == "flow" ]]; then
+      atv_flow $2
     elif [[ $1 == "show" && $2 == "memos" && $3 == "-g" ]]; then
       atv_show_memos_grep $4
     elif [[ $1 == "show" && $2 == "memos" ]]; then
@@ -37,6 +39,7 @@ atv_help_footer(){
 _atv_run_help() {
   atv_help_header
   atv_help_add_new
+  atv_help_flow
   atv_help_show_memos
   atv_help_show_memos_grep
   atv_help_show_note
@@ -52,6 +55,13 @@ atv_add_new() {
 }
 atv_help_add_new() {
   echo "    - atv ${C_YELLOW}add new${C_END} [fileName (without .md)] - add new atv file note"
+}
+
+atv_flow() {
+  v $F_MYATV_FLOW
+}
+atv_help_flow() {
+  echo "    - atv ${C_YELLOW}flow${C_END}                             - edit flow file in vim"
 }
 
 atv_show_memos() {
