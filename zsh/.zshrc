@@ -54,6 +54,12 @@ done
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
+## zsh-syntax-highlighting plugin
+## see: [zsh-syntax-highlighting/main.md](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md)
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
 ### ANTIGEN
 # antigen time!
 source /usr/share/zsh-antigen/antigen.zsh
