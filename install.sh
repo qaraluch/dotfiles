@@ -120,6 +120,10 @@ else
   ln -sf ${BASEDIR}/zsh/.zshrc_test  ~
   echo "${_PROMPT}${_TASK}${_TICK} Symlinked zsh configs."
 
+  ## APPS
+  ln -sf ${BASEDIR}/vim/.vimrc  ~
+  echo "${_PROMPT}${_TASK}${_TICK} Symlinked vim config."
+
   ######################################################################### MANUAL #######
   ## HYPER
   echo "${_PROMPT}${_TASK}${_CROSS} Not symlinked hyper configs."
