@@ -50,7 +50,7 @@ alias gld='mygit_log_full_date'                     # .rc_git
 alias gsta='mygit_stash_ls'                         # .rc_git
 alias gstas='mygit_stash_save'                      # .rc_git
 alias gstap='mygit_stash_pop'                       # .rc_git
-alias gstas='mygit_stash_show'                      # .rc_git
+alias gstashow='mygit_stash_show'                   # .rc_git
 
 # menus
 alias atv='atv_menu $@'                             # menus/matv
