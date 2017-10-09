@@ -31,6 +31,7 @@ mygit_log_full_date() { git --no-pager log --pretty=format:"$git_log_alternative
 
 mygit_stash_ls() { git stash list ; }
 mygit_stash_save() { git stash save $* ; git stash list ; line_break ; git status -s ; }
+
 mygit_stash_pop() {
   local stashid
   is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
@@ -40,6 +41,7 @@ mygit_stash_pop() {
   line_break &&
   git status -s
 }
+
 mygit_stash_show() {
   local stashid
   is_in_git_repo && stashid=$(git stash list | fzf -x | cut -d : -f1) &&
