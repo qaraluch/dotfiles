@@ -77,6 +77,10 @@ source $ZSH/oh-my-zsh.sh
 # original FZF cfg
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
+
 # --- ORG CFG ------
 
 # Uncomment the following line to use case-sensitive completion.
