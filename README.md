@@ -9,8 +9,9 @@ Before running main install script you need to review configuration repo and ins
 After sourcing dotfile's config launch installation process by:
  
 ### Using symlink
+See dotfiles-cfg/.dotfiles-config for variable reference.
 ```sh
-rm -rf $HOME/.dotfiles-source && ln -sf $_DOTFILES_SOURCE $HOME/.dotfiles-source # see dotfiles-cfg/.dotfiles-config
+rm -rf $HOME/.dotfiles-source && ln -sf $_DOTFILES_SOURCE $HOME/.dotfiles-source 
 cd !!:$
 ./install.sh
 ```
