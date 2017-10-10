@@ -1,0 +1,5 @@
+# open urls in chrome
+
+chrome_it() {
+  chrome.exe "$@"
+}
