@@ -3,8 +3,14 @@
     "workbench.startupEditor": "welcomePage",
     "editor.minimap.enabled": false,
     "projectManager.sortList": "Name",
-    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.colorTheme": "Ayu Light",
     "workbench.iconTheme": "material-icon-theme",
     "editor.tabSize": 2,
-    "editor.fontSize": 15,    
+    "editor.fontSize": 15,
+    "workbench.colorCustomizations": {
+        "editorWarning.border": "#336699",
+        "editorWarning.foreground": "#336699",
+        "editorError.border": "#ff0800",
+        "editorError.foreground": "#ff0800"
+    }    
 }
