@@ -29,6 +29,7 @@ alias rdb='updatedb_remove_dbs'                     # zsh/fn for locate command
 
 # editors
 alias su='subl_it $1'                               # zsh/utlis
+alias co='code_it $1'                               # zsh/utlis
 alias subl='subl.exe $@'
 alias v='vim $@'
 

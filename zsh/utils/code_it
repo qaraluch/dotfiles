@@ -1,0 +1,10 @@
+#!/bin/bash
+# vscode but with translation to win path
+# for open file
+
+code_it() {
+  local WINPATH=$( wslpath -w $1 )
+  # echo $WINPATH
+  code ${WINPATH}
+}
+
