@@ -3,6 +3,8 @@
 dev_menu() {
     if [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
+    elif [[ $1 == "github" && $2 == "init" ]]; then
+      _dev_menu_github_auto_init
     elif [[ $1 == "show" && $2 == "memos" && $3 == "-g" ]]; then
       # atv_show_memos_grep $4
     elif [[ $1 == "help" || "-h" ]]; then
@@ -30,6 +32,7 @@ _dev_help_footer(){
 dev_run_help() {
   _dev_help_header
   _dev_help_dev_menu_git_auto_init
+  _dev_help_dev_menu_github_auto_init
   _dev_help_footer
   # line_break
 }
@@ -40,5 +43,12 @@ _dev_menu_git_auto_init() {
 }
 _dev_help_dev_menu_git_auto_init() {
   echo "    - dev ${C_YELLOW}git init ${C_END}             - auto git init"
+}
+
+_dev_menu_github_auto_init() {
+  dev_menu_github_auto_init
+}
+_dev_help_dev_menu_github_auto_init() {
+  echo "    - dev ${C_YELLOW}github init ${C_END}          - auto github repo init"
 }
 
