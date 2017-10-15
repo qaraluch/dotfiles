@@ -24,6 +24,7 @@ alias mv='mv -i -v $@'
 alias mvt='mv -ivt $@'
 alias cp='cp -i -v -rf $@'
 alias ln='ln -i -v $@'
+alias tre='tree_better'                             # zsh/fn
 alias udb='updatedb_better'                         # zsh/fn for locate command
 alias rdb='updatedb_remove_dbs'                     # zsh/fn for locate command
 

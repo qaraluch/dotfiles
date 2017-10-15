@@ -12,5 +12,11 @@
         "editorWarning.foreground": "#336699",
         "editorError.border": "#ff0800",
         "editorError.foreground": "#ff0800"
-    }    
+    },
+    "npm-intellisense.importES6": true,
+    "npm-intellisense.importQuotes": "'",
+    "npm-intellisense.importLinebreak": ";\r\n",
+    "npm-intellisense.importDeclarationType": "const",    
+    "npm-intellisense.scanDevDependencies": true,
+    "npm-intellisense.showBuildInLibs": true
 }
