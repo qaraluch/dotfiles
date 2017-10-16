@@ -25,3 +25,9 @@ set number
 set ff=unix
 syntax on                                        "" syntax highlights
 set directory^=$HOME/.vim/temp//                 "" swap files dir
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""" PLUGS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+Plug 'plasticboy/vim-markdown'
+call plug#end()
