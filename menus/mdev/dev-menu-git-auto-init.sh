@@ -8,6 +8,8 @@
 _DEV_TASK_INIT="[ git init ]"
 
 dev_menu_git_auto_init() {
+  local DIR_NAME=${PWD##*/}
+  local _MYREPONAME=$DIR_NAME
   echo "${_DEV_PROMPT} About to init new repo... "
   read REPLY\?"${_DEV_PROMPT}${_DEV_TASK_INIT} Are you sure that you are in right working dir and cloned desired boilerplate? [y/N]"
   if [[ "$REPLY" =~ ^([yY][eE][sS]|[yY])+$ ]]
@@ -22,10 +24,9 @@ dev_menu_git_auto_init() {
     git commit -m "First commit"
     local DIR_NAME=${PWD##*/}
     clip_it $DIR_NAME
-    # echo  "${_DEV_PROMPT}${_DEV_TASK_INIT} Repo name will be: ${C_YELLOW}${DIR_NAME}${C_END}"
-    vared -p "${_DEV_PROMPT}${_DEV_TASK_INIT} Input remote repo name: " -c REPO_NAME
-    echo  "${_DEV_PROMPT}${_DEV_TASK_INIT} My remote repo name will be: ${C_YELLOW}${REPO_NAME}${C_END}"
-    local REPO_PATH="$D_MYGITREMOTE/$REPO_NAME.git"
+    vared -p "${_DEV_PROMPT}${_DEV_TASK_INIT} Input remote repo name: " _MYREPONAME
+    echo  "${_DEV_PROMPT}${_DEV_TASK_INIT} My remote repo name will be: ${C_YELLOW}${_MYREPONAME}${C_END}"
+    local REPO_PATH="$D_MYGITREMOTE/$_MYREPONAME.git"
     git init --bare $REPO_PATH
     git remote add origin $REPO_PATH
     git push -u origin master
