@@ -7,6 +7,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "editor.tabSize": 2,
   "editor.fontSize": 15,
+  "files.eol": "\n",
   "workbench.colorCustomizations": {
     "editorWarning.border": "#336699",
     "editorWarning.foreground": "#336699",
