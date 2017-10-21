@@ -5,8 +5,8 @@ dev_menu() {
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
       _dev_menu_github_auto_init
-    elif [[ $1 == "show" && $2 == "memos" && $3 == "-g" ]]; then
-      # atv_show_memos_grep $4
+    elif [[ $1 == "show" && $2 == "mynpms" ]]; then
+      _dev_menu_show_mynpms
     elif [[ $1 == "help" || "-h" ]]; then
       dev_run_help
     else
@@ -33,6 +33,7 @@ dev_run_help() {
   _dev_help_header
   _dev_help_dev_menu_git_auto_init
   _dev_help_dev_menu_github_auto_init
+  _dev_help_dev_menu_show_mynpms
   _dev_help_footer
   # line_break
 }
@@ -51,4 +52,13 @@ _dev_menu_github_auto_init() {
 _dev_help_dev_menu_github_auto_init() {
   echo "    - dev ${C_YELLOW}github init ${C_END}          - auto github repo init"
 }
+
+_dev_menu_show_mynpms() {
+  npm-user-packages qaraluch                                  ## dependecy npm package: npm-user-packages-cli
+}
+
+_dev_help_dev_menu_show_mynpms() {
+  echo "    - dev ${C_YELLOW}show mynpms ${C_END}          - show my npm packages"
+}
+
 
