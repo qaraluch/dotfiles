@@ -58,7 +58,7 @@ atv_help_add_new() {
 }
 
 atv_flow() {
-  v $F_MYATV_FLOW
+  vim $F_MYATV_FLOW
 }
 atv_help_flow() {
   echo "    - atv ${C_YELLOW}flow${C_END}                             - edit flow file in vim"
