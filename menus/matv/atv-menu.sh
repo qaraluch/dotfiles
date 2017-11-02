@@ -113,7 +113,7 @@ atv_show_files() {
   elif [[ $1 == "imports" ]]; then
     tre "$D_MYATV/$1"
   else
-    tree_better_dirs                              # see zsh/fns
+    tree_better_dirs $D_MYATV                             # see zsh/fns
   fi
 }
 atv_help_show_files() {
