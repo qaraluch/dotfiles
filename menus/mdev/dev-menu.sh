@@ -3,6 +3,10 @@
 dev_menu() {
     if [[ $1 == "add" && $2 == "new" ]]; then
       _dev_menu_add_new $3
+    elif [[ $1 == "snippets" ]]; then
+      local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)
+      echo $_snippet
+      clip_it $_snippet
     elif [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
