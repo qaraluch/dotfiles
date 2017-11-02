@@ -11,6 +11,8 @@ atv_menu() {
       atv_show_memos $3
     elif [[ $1 == "show" && $2 == "note" ]]; then
       atv_show_note $3
+    elif [[ $1 == "show" && $2 == "files" ]]; then
+      atv_show_files $3
     elif [[ $1 == "split" && $2 == "-d" ]]; then
       atv-import-split-md run -d ${@:3}                       # see dev/...
     elif [[ $1 == "split" ]]; then
@@ -43,6 +45,7 @@ _atv_run_help() {
   atv_help_show_memos
   atv_help_show_memos_grep
   atv_help_show_note
+  atv_help_show_files
   atv_help_import_split_md
   atv_help_import_split_md_dryrun
   atv_help_footer
@@ -76,6 +79,50 @@ atv_show_note() {
 }
 atv_help_show_note() {
   echo "    - atv ${C_YELLOW}show note${C_END}                        - pick and show content of atv note in terminal"
+}
+
+atv_show_files() {
+  if [[ $1 == "atv" ]]; then
+    tre "$D_MYATV_BOOK/abouts/$1"
+  elif [[ $1 == "vectra" ]]; then
+    tre "$D_MYATV_BOOK/auto/$1"
+  elif [[ $1 == "bitcoin" ]]; then
+    tre "$D_MYATV_BOOK/$1"
+  elif [[ $1 == "js" ]]; then
+    tre "$D_MYATV_BOOK/dev/$1"
+  elif [[ $1 == "vba" ]]; then
+    tre "$D_MYATV_BOOK/dev/$1"
+  elif [[ $1 == "fon" ]]; then
+    tre "$D_MYATV_BOOK/$1"
+  elif [[ $1 == "ideas" ]]; then
+    tre "$D_MYATV_BOOK/$1"
+  elif [[ $1 == "ongoings" ]]; then
+    tre "$D_MYATV_BOOK/$1"
+  elif [[ $1 == "bash" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "git" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "st3" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "vim" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "vsc" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "win10" ]]; then
+    tre "$D_MYATV_BOOK/power-user/$1"
+  elif [[ $1 == "imports" ]]; then
+    tre "$D_MYATV/$1"
+  else
+    tree_better_dirs                              # see zsh/fns
+  fi
+}
+atv_help_show_files() {
+  echo "    - atv ${C_YELLOW}show files${C_END} [dir]                 - tree show of files in dir:
+                                             - atv, ideas, ongoings,
+                                             - vectra, bitcoin, fon,
+                                             - js, vba,
+                                             - bash, git, st3, vim, vsc, win10,
+                                             - imports"
 }
 
 atv_show_memos_grep() {
