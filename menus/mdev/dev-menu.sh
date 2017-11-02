@@ -1,7 +1,9 @@
 #!/bin/bash
 # MAIN
 dev_menu() {
-    if [[ $1 == "git" && $2 == "init" ]]; then
+    if [[ $1 == "add" && $2 == "new" ]]; then
+      _dev_menu_add_new $3
+    elif [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
       _dev_menu_github_auto_init
@@ -31,6 +33,7 @@ _dev_help_footer(){
 
 dev_run_help() {
   _dev_help_header
+  _dev_help_dev_menu_add_new
   _dev_help_dev_menu_git_auto_init
   _dev_help_dev_menu_github_auto_init
   _dev_help_dev_menu_show_mynpms
@@ -39,6 +42,13 @@ dev_run_help() {
 }
 
 # FUNCTIONS
+_dev_menu_add_new() {
+  dev_menu_touch_pair $1
+}
+_dev_help_dev_menu_add_new() {
+  echo "    - dev ${C_YELLOW}add new ${C_END}              - add new files by touching src and test pair"
+}
+
 _dev_menu_git_auto_init() {
   dev_menu_git_auto_init
 }
