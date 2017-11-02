@@ -6,3 +6,7 @@ function tree_better() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+function tree_better_dirs() {
+  tree -dC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
