@@ -16,7 +16,7 @@ alias hpurge='history_zsh_purge'                    # zsh/fns
 alias e='exit'
 alias ex='explorer.exe .'
 alias c='cat $@'
-alias chrome='chrome_it $@'                             # zsh/fns
+alias chrome='chrome_it $@'                         # zsh/fns
 alias clip='clip_it $@'                             # zsh/fns
 alias reload='reload_zshrc'                         # zsh/fns
 alias t='touch_better'                              # zsh/fns
@@ -66,5 +66,9 @@ alias dm='dmark $@'
 alias j='jump'                                      # or C+G
 
 
-
+# dev
+alias nr='npm run $@'
+alias nrst='npm run start:test $@'
+alias nrsc='npm run start:cli'
+alias nrs='npm run start'
 
