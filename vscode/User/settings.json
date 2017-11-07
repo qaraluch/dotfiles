@@ -6,7 +6,7 @@
   "workbench.colorTheme": "Ayu Light",
   "workbench.iconTheme": "material-icon-theme",
   "editor.tabSize": 2,
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "files.eol": "\n",
   "workbench.colorCustomizations": {
     "editorWarning.border": "#336699",
@@ -20,5 +20,15 @@
   "npm-intellisense.importDeclarationType": "const",
   "npm-intellisense.scanDevDependencies": true,
   "npm-intellisense.showBuildInLibs": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "consolas, Droid Sans Mono Slashed for Powerline",
+  "editor.lineHeight": 20,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/dist": true
+  }
 }
