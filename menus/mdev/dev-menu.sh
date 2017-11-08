@@ -4,9 +4,11 @@ dev_menu() {
     if [[ $1 == "add" && $2 == "new" ]]; then
       _dev_menu_add_new $3
     elif [[ $1 == "snippets" ]]; then
-      local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)
+      local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)      # coupled with snippets in atv
       echo $_snippet
       clip_it $_snippet
+    elif [[ $1 == "todos" ]]; then
+      grep --exclude-dir=.git --exclude-dir=node_modules -rEI "//TODO:" . 2>/dev/null
     elif [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
@@ -37,10 +39,14 @@ _dev_help_footer(){
 
 dev_run_help() {
   _dev_help_header
+  # ---
   _dev_help_dev_menu_add_new
+  _dev_help_dev_menu_snippets
+  _dev_help_dev_menu_todos
   _dev_help_dev_menu_git_auto_init
   _dev_help_dev_menu_github_auto_init
   _dev_help_dev_menu_show_mynpms
+  # ---
   _dev_help_footer
   # line_break
 }
@@ -51,6 +57,14 @@ _dev_menu_add_new() {
 }
 _dev_help_dev_menu_add_new() {
   echo "    - dev ${C_YELLOW}add new ${C_END}              - add new files by touching src and test pair"
+}
+
+_dev_help_dev_menu_snippets() {
+  echo "    - dev ${C_YELLOW}snippets ${C_END}             - echo and clip code snippets from atv"
+}
+
+_dev_help_dev_menu_todos() {
+  echo "    - dev ${C_YELLOW}todos ${C_END}                - list all \"//TODO:\" marks in the code"
 }
 
 _dev_menu_git_auto_init() {
