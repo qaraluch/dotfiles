@@ -8,7 +8,7 @@ dev_menu() {
       echo $_snippet
       clip_it $_snippet
     elif [[ $1 == "todos" ]]; then
-      grep --exclude-dir=.git --exclude-dir=node_modules -rEI "//TODO:" . 2>/dev/null
+      grep --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist -rEI "//TODO:" . 2>/dev/null
     elif [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
