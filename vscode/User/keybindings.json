@@ -1,37 +1,45 @@
-// Place your key bindings in this file to overwrite the defaults
 [
+  // Place your key bindings in this file to overwrite the defaults
   // vscode
-  { 
+  {
     "key": "ctrl+shift+D",
-    "command": "editor.action.copyLinesDownAction", 
-    "when": "editorTextFocus && !editorReadonly" },
-  { 
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
     "key": "ctrl+l",
-    "command": "expandLineSelection", 
-    "when": "editorTextFocus" },
-  { 
+    "command": "expandLineSelection",
+    "when": "editorTextFocus"
+  },
+  {
     "key": "ctrl+shift+down",
-    "command": "editor.action.moveLinesDownAction", 
-    "when": "editorTextFocus && !editorReadonly" },
-  { 
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
     "key": "ctrl+shift+up",
-    "command": "editor.action.moveLinesUpAction", 
-    "when": "editorTextFocus && !editorReadonly" },
-  { 
-    "key": "ctrl+alt+S", 
-    "command": "workbench.action.terminal.toggleTerminal" },
-  { 
-    "key": "ctrl+k ctrl+m", 
-    "command": "workbench.action.toggleMaximizedPanel" },
-  //  
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+S",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+k ctrl+m",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  //
   // Project Manager
   {
-    "key": "ctrl+alt+p", 
-    "command": "projectManager.listProjects"},
+    "key": "ctrl+alt+p",
+    "command": "projectManager.listProjects"
+  },
   {
-    "key": "shift+alt+p", 
-    "command": "projectManager.editProjects"},
-  //  
+    "key": "shift+alt+p",
+    "command": "projectManager.editProjects"
+  },
+  //
   // Jumpy
   {
     "key": "shift+enter",
@@ -44,9 +52,9 @@
     "when": "editorTextFocus"
   },
   {
-  "key": "Escape",
-  "command": "extension.jumpy-exit",
-  "when": "editorTextFocus && jumpy.isJumpyMode"
+    "key": "Escape",
+    "command": "extension.jumpy-exit",
+    "when": "editorTextFocus && jumpy.isJumpyMode"
   },
   {
     "key": "ctrl+i",
@@ -57,23 +65,29 @@
     "key": "shift+enter",
     "command": "extension.jumpy-exit",
     "when": "editorTextFocus && jumpy.isJumpyMode"
-  }
-  //  
+  },
+  //
   // Space Block Jumper
   {
     "key": "alt+up",
-    "command": "spaceBlockJumper.moveUp"  
-  }
+    "command": "spaceBlockJumper.moveUp"
+  },
   {
     "key": "alt+down",
-    "command": "spaceBlockJumper.moveDown"  
-  }
+    "command": "spaceBlockJumper.moveDown"
+  },
   {
     "key": "alt+shift+up",
-    "command": "spaceBlockJumper.selectUp"  
-  }
+    "command": "spaceBlockJumper.selectUp"
+  },
   {
     "key": "alt+shift+down",
-    "command": "spaceBlockJumper.selectDown"  
+    "command": "spaceBlockJumper.selectDown"
+  },
+  //
+  // ES Quotes
+  {
+    "key": "ctrl+shift+c",
+    "command": "esQuotes.transformBetweenQuotes"
   }
 ]
