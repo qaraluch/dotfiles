@@ -83,35 +83,39 @@ atv_help_show_note() {
 
 atv_show_files() {
   if [[ $1 == "atv" ]]; then
-    tre "$D_MYATV_BOOK/abouts/$1"
+    tree_better "$D_MYATV_BOOK/abouts/$1"
   elif [[ $1 == "vectra" ]]; then
-    tre "$D_MYATV_BOOK/auto/$1"
+    tree_better "$D_MYATV_BOOK/auto/$1"
   elif [[ $1 == "bitcoin" ]]; then
-    tre "$D_MYATV_BOOK/$1"
+    tree_better "$D_MYATV_BOOK/$1"
   elif [[ $1 == "js" ]]; then
-    tre "$D_MYATV_BOOK/dev/$1"
+    tree_better "$D_MYATV_BOOK/dev/$1"
   elif [[ $1 == "vba" ]]; then
-    tre "$D_MYATV_BOOK/dev/$1"
+    tree_better "$D_MYATV_BOOK/dev/$1"
   elif [[ $1 == "fon" ]]; then
-    tre "$D_MYATV_BOOK/$1"
+    tree_better "$D_MYATV_BOOK/$1"
   elif [[ $1 == "ideas" ]]; then
-    tre "$D_MYATV_BOOK/$1"
+    tree_better "$D_MYATV_BOOK/$1"
   elif [[ $1 == "ongoings" ]]; then
-    tre "$D_MYATV_BOOK/$1"
+    tree_better "$D_MYATV_BOOK/$1"
   elif [[ $1 == "bash" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "git" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "st3" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "vim" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "vsc" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "win10" ]]; then
-    tre "$D_MYATV_BOOK/power-user/$1"
+    tree_better "$D_MYATV_BOOK/power-user/$1"
   elif [[ $1 == "imports" ]]; then
-    tre "$D_MYATV/$1"
+    tree_better "$D_MYATV/$1"
+  elif [[ $1 == "work" ]]; then
+    tree_better "$D_MYATV_BOOK/$1"
+  elif [[ $1 == "writings" ]]; then
+    tree_better "$D_MYATV_BOOK/$1"
   else
     tree_better_dirs $D_MYATV                             # see zsh/fns
   fi
