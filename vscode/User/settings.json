@@ -31,5 +31,6 @@
     "**/.DS_Store": true,
     "**/dist": true
   },
-  "esQuotes.defaultQuote": "\""
+  "esQuotes.defaultQuote": "\"",
+  "material-icon-theme.showUpdateMessage": false
 }
