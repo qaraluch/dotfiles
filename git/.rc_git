@@ -14,7 +14,8 @@ mygit_commit() { git commit $* -v ; line_break ; mygit_log_recent ; }
 mygit_add() {  git add $* ; git status -s ; mygit_log_recent ; }
 mygit_add_update() { git add -u $* ; git status -s ; mygit_log_recent ; }
 mygit_add_and_commit() { git add $* ; git status -s ; mygit_commit ; }
-mygit_add_update_and_commit() { git add -u $* ; git status -s ; mygit_commit ; }
+mygit_add_update_and_commit() { git add -u ; git status -s ; mygit_commit ; }
+mygit_add_update_and_commit_ammend() { git add -u ; git status -s ; git commit -v --amend ; }
 
 mygit_clip_hash() { clip_it $(mygit_get_commit_hash) ; }
 mygit_clip_msg() { clip_it $(mygit_get_commit_msg) ; }
