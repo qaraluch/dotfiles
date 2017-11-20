@@ -32,5 +32,6 @@
     "**/dist": true
   },
   "esQuotes.defaultQuote": "\"",
-  "material-icon-theme.showUpdateMessage": false
+  "material-icon-theme.showUpdateMessage": false,
+  "workbench.panel.location": "right"
 }

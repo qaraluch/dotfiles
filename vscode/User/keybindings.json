@@ -25,9 +25,14 @@
     "key": "ctrl+alt+S",
     "command": "workbench.action.terminal.toggleTerminal"
   },
+  // {
+  //   "key": "ctrl+k ctrl+m",
+  //   "command": "workbench.action.toggleMaximizedPanel"
+  // },
   {
-    "key": "ctrl+k ctrl+m",
-    "command": "workbench.action.toggleMaximizedPanel"
+    "key": "ctrl+k ctrl+k",
+    "command": "deleteAllRight",
+    "when": "editorTextFocus && !editorReadonly"
   },
   //
   // Project Manager
