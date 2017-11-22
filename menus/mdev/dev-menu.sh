@@ -3,6 +3,8 @@
 dev_menu() {
     if [[ $1 == "add" && $2 == "new" ]]; then
       _dev_menu_add_new $3
+    elif [[ $1 == "add" && $2 == "todo" ]]; then
+      echo "\\n //TODO: $3" >> README.md
     elif [[ $1 == "snippets" ]]; then
       local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)      # coupled with snippets in atv
       echo $_snippet
@@ -43,6 +45,7 @@ dev_run_help() {
   _dev_help_header
   # ---
   _dev_help_dev_menu_add_new
+  _dev_help_dev_menu_add_todo
   _dev_help_dev_menu_snippets
   _dev_help_dev_menu_todos
   _dev_help_dev_menu_todocs
@@ -60,6 +63,10 @@ _dev_menu_add_new() {
 }
 _dev_help_dev_menu_add_new() {
   echo "    - dev ${C_YELLOW}add new ${C_END}              - add new files by touching src and test pair"
+}
+
+_dev_help_dev_menu_add_todo() {
+  echo "    - dev ${C_YELLOW}add todo ${C_END}              - add to README.md todo info"
 }
 
 _dev_help_dev_menu_snippets() {
