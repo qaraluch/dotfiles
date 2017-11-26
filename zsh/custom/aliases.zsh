@@ -17,6 +17,7 @@ alias e='exit'
 alias ex='explorer.exe .'
 alias c='cat $@'
 alias chrome='chrome_it $@'                         # zsh/fns
+alias chromerepo='chrome_repo'                      # zsh/fns
 alias clip='clip_it $@'                             # zsh/fns
 alias reload='reload_zshrc'                         # zsh/fns
 alias t='touch_better'                              # zsh/fns

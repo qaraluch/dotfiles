@@ -3,3 +3,7 @@
 chrome_it() {
   chrome.exe "$@"
 }
+
+chrome_repo() {
+  chrome.exe $(node -p "require('./package.json').repository.url")
+}
