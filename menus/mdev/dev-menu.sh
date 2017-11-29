@@ -66,7 +66,7 @@ _dev_help_dev_menu_add_new() {
 }
 
 _dev_help_dev_menu_add_todo() {
-  echo "    - dev ${C_YELLOW}add todo ${C_END}              - add to README.md todo info"
+  echo "    - dev ${C_YELLOW}add todo [msg] ${C_END}       - add to README.md todo info"
 }
 
 _dev_help_dev_menu_snippets() {
