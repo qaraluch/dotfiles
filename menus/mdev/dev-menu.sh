@@ -62,11 +62,11 @@ _dev_menu_add_new() {
   dev_menu_touch_pair $1
 }
 _dev_help_dev_menu_add_new() {
-  echo "    - dev ${C_YELLOW}add new ${C_END}              - add new files by touching src and test pair"
+  echo "    - dev ${C_YELLOW}add new ${C_END}  [filename]  - add new files by touching src and test pair"
 }
 
 _dev_help_dev_menu_add_todo() {
-  echo "    - dev ${C_YELLOW}add todo [msg] ${C_END}       - add to README.md todo info"
+  echo "    - dev ${C_YELLOW}add todo ${C_END} [msg]       - add to README.md todo info"
 }
 
 _dev_help_dev_menu_snippets() {
