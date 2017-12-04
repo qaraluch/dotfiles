@@ -22,7 +22,7 @@ plugins=()
 
 # ZSH
 [ -f ~/.zshrc_opts ] && source ~/.zshrc_opts
-[ -f ~/.zshrc_utils ] && source ~/.zshrc_test
+[ -f ~/.zshrc_test ] && source ~/.zshrc_test
 [ -f ~/.zshrc_utils ] && source ~/.zshrc_utils
 
 #  source fns and utils
