@@ -76,4 +76,5 @@ alias nrb='npm run build $@'
 alias nst='npm run start:test $@'
 alias nsc='npm run start:cli'
 alias ns='npm run start'
+alias nsr='npm run start:raw'
 
