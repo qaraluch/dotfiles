@@ -72,7 +72,7 @@ alias j='jump'                                      # or C+G
 
 # dev
 alias nr='npm run $@'
-alias nrb='npm run build $@'
+alias nb='npm run build $@'
 alias nst='npm run start:test $@'
 alias nsc='npm run start:cli'
 alias ns='npm run start'
