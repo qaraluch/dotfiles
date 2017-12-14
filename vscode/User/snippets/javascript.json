@@ -1,0 +1,74 @@
+{
+  // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // More info: https://code.visualstudio.com/docs/editor/userdefinedsnippets
+  // Editor: [snippet generator](https://pawelgrzybek.com/snippet-generator/)
+  // Example:
+  "print-to-console": {
+    "prefix": ".log",
+    "body": ["console.log('$1');", "$2"],
+    "description": "Log output to console."
+  },
+  "function-state": {
+    "prefix": ".fun.s",
+    "body": ["function $1name(state){", "  $2", "  return state;", "}"],
+    "description": "Simple function with state passage."
+  },
+  "promise-return-resolve": {
+    "prefix": ".p.res",
+    "body": ["return Promise.resolve(${1:state}).then($2);", "$0"],
+    "description": "Return promise resolve."
+  },
+  "promise-return-promisify": {
+    "prefix": ".p.fy",
+    "body": ["return new Promise((resolve, reject) => {", "  $0", "});"],
+    "description": "Return promise resolve."
+  },
+  "test-unit": {
+    "prefix": ".t",
+    "body": [
+      "test(\"$1\", t => {",
+      "  const msg = \"should return $1\";",
+      "  const actual = $0true;",
+      "  const expected = true;",
+      "  t.is(actual, expected, msg);",
+      "});"
+    ],
+    "description": "Ava test unit."
+  },
+  "test-unit-async": {
+    "prefix": ".t.a",
+    "body": [
+      "test(\"$1\", async t => {",
+      "  const msg = \"should return $1\";",
+      "  const actual = await $0true;",
+      "  const expected = true;",
+      "  t.is(actual, expected, msg);",
+      "});"
+    ],
+    "description": "Ava test aync unit."
+  },
+  "test-assertion-content": {
+    "prefix": ".t.c",
+    "body": [
+      "const msg${1:2} = \"should return $0\";",
+      "const actual${1:2} = true;",
+      "const expected${1:2} = true;",
+      "t.is(actual${1:2}, expected${1:2}, msg${1:2});"
+    ],
+    "description": "Ava test assertion content."
+  },
+  "test-unit-error": {
+    "prefix": ".t.e",
+    "body": [
+      "test(\"error $1\", t => {",
+      "  const msg = \"should throw an error $1\";",
+      "  const error = t.throws( ${2:fn}($0) );",
+      "  t.is(error.message.slice(0, 50) + \"...\", \"YYY-XXX - ${2:fn}(): ...\", msg);",
+      "});"
+    ],
+    "description": "Ava test assertion content."
+  }
+}
