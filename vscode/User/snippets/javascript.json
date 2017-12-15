@@ -7,27 +7,40 @@
   // Editor: [snippet generator](https://pawelgrzybek.com/snippet-generator/)
   // Example:
   "print-to-console": {
-    "prefix": ".log",
-    "body": ["console.log('$1');", "$2"],
-    "description": "Log output to console."
+    "description": "Log output to console.",
+    "prefix": "\\console-log",
+    "body": ["console.log('$1');", "$2"]
   },
   "function-state": {
-    "prefix": ".fun.s",
-    "body": ["function $1name(state){", "  $2", "  return state;", "}"],
-    "description": "Simple function with state passage."
+    "description": "Simple function with state passage.",
+    "prefix": "\\function-state",
+    "body": ["function $1name(state){", "  $2", "  return state;", "}"]
   },
   "promise-return-resolve": {
-    "prefix": ".p.res",
-    "body": ["return Promise.resolve(${1:state}).then($2);", "$0"],
-    "description": "Return promise resolve."
+    "description": "Return promise resolve.",
+    "prefix": "\\promsie-resolve",
+    "body": ["return Promise.resolve(${1:state}).then($2);", "$0"]
+  },
+  "promise-catch": {
+    "description": "Promise .catch().",
+    "prefix": "\\promsie-catch",
+    "body": [
+      ".catch(${1:handleExeptions}.bind(state));",
+      "$0function ${1:handleExeptions}(error) {",
+      "  const state = this;",
+      "  throw new Error(`${${2:state.moduleName}} Error: ${error.message}`);  ",
+      "}",
+      ""
+    ]
   },
   "promise-return-promisify": {
-    "prefix": ".p.fy",
-    "body": ["return new Promise((resolve, reject) => {", "  $0", "});"],
-    "description": "Return promise resolve."
+    "description": "Return promise resolve.",
+    "prefix": "\\promisify",
+    "body": ["return new Promise((resolve, reject) => {", "  $0", "});"]
   },
   "test-unit": {
-    "prefix": ".t",
+    "description": "Ava test unit.",
+    "prefix": "\\test",
     "body": [
       "test(\"$1\", t => {",
       "  const msg = \"should return $1\";",
@@ -35,11 +48,11 @@
       "  const expected = true;",
       "  t.is(actual, expected, msg);",
       "});"
-    ],
-    "description": "Ava test unit."
+    ]
   },
   "test-unit-async": {
-    "prefix": ".t.a",
+    "description": "Ava test aync unit.",
+    "prefix": "\\test-async",
     "body": [
       "test(\"$1\", async t => {",
       "  const msg = \"should return $1\";",
@@ -47,28 +60,41 @@
       "  const expected = true;",
       "  t.is(actual, expected, msg);",
       "});"
-    ],
-    "description": "Ava test aync unit."
+    ]
   },
   "test-assertion-content": {
-    "prefix": ".t.c",
+    "description": "Ava test assertion content.",
+    "prefix": "\\test-content",
     "body": [
       "const msg${1:2} = \"should return $0\";",
       "const actual${1:2} = true;",
       "const expected${1:2} = true;",
       "t.is(actual${1:2}, expected${1:2}, msg${1:2});"
-    ],
-    "description": "Ava test assertion content."
+    ]
+  },
+  "test-assertion-content-checkfile": {
+    "description": "Ava test assertion check file content.",
+    "prefix": "\\test-content-file",
+    "body": [
+      "$0${1:import ifExists from \"qm-fs-ifexists\";}",
+      "const msg${2:2} = \"should exists ${3:what?} file.\";",
+      "const actual${2:2} = ifExists(${4:expectedFilePath}, {",
+      "  asBoolean: false,",
+      "  synchronous: true",
+      "});",
+      "const expected${2:2} = \"file\";",
+      "t.deepEqual(actual${2:2}, expected${2:2}, msg${2:2});"
+    ]
   },
   "test-unit-error": {
-    "prefix": ".t.e",
+    "description": "Ava test assertion error content.",
+    "prefix": "\\test-error",
     "body": [
       "test(\"error $1\", t => {",
       "  const msg = \"should throw an error $1\";",
       "  const error = t.throws( ${2:fn}($0) );",
       "  t.is(error.message.slice(0, 50) + \"...\", \"YYY-XXX - ${2:fn}(): ...\", msg);",
       "});"
-    ],
-    "description": "Ava test assertion content."
+    ]
   }
 }
