@@ -14,7 +14,12 @@
   "function-state": {
     "description": "Simple function with state passage.",
     "prefix": "\\function-state",
-    "body": ["function $1name(state){", "  $2", "  return state;", "}"]
+    "body": ["function ${1:name}(state){", "  $0", "  return state;", "}"]
+  },
+  "object-assign": {
+    "description": "Object assign.",
+    "prefix": "\\object-assign",
+    "body": ["$0Object.assign(${1:Object.create(null)}, ${2:obj1}, ${3:obj2});"]
   },
   "promise-return-resolve": {
     "description": "Return promise resolve.",
@@ -84,6 +89,18 @@
       "});",
       "const expected${2:2} = \"file\";",
       "t.deepEqual(actual${2:2}, expected${2:2}, msg${2:2});"
+    ]
+  },
+  "test-assertion-content-checkjsonfile-content": {
+    "description": "Ava test assertion check json file content.",
+    "prefix": "\\test-content-json-file",
+    "body": [
+      "$0${1:import readJsonFile from \"load-json-file\";}",
+      "const msg${2:2} = \"should in json file exists property ${3:what?} with exact content\";",
+      "const obj = await loadJsonFile(state.filePath);",
+      "const actual${2:2} = obj.${3:property};",
+      "const expected${2:2} = \"${4:content}\";",
+      "t.is(actual${2:2}, expected${2:2}, msg${2:2});"
     ]
   },
   "test-unit-error": {
