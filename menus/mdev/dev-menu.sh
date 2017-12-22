@@ -5,7 +5,9 @@ dev_menu() {
       _dev_menu_add_new $3
     elif [[ $1 == "add" && $2 == "todo" ]]; then
       echo "\\n //TODO: $3" >> README.md
-    elif [[ $1 == "snippets" ]]; then
+    elif [[ $1 == "add" && $2 == "snippet" ]]; then
+      touch $3 ; subl_it $3
+    elif [[ $1 == "snippet" ]]; then
       local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)      # coupled with snippets in atv
       echo $_snippet
       clip_it $_snippet
@@ -46,7 +48,8 @@ dev_run_help() {
   # ---
   _dev_help_dev_menu_add_new
   _dev_help_dev_menu_add_todo
-  _dev_help_dev_menu_snippets
+  _dev_help_dev_menu_add_snippet
+  _dev_help_dev_menu_snippet
   _dev_help_dev_menu_todos
   _dev_help_dev_menu_todocs
   _dev_help_dev_menu_git_auto_init
@@ -62,37 +65,41 @@ _dev_menu_add_new() {
   dev_menu_touch_pair $1
 }
 _dev_help_dev_menu_add_new() {
-  echo "    - dev ${C_YELLOW}add new ${C_END}  [filename]  - add new files by touching src and test pair"
+  echo "    - dev ${C_YELLOW}add new ${C_END} [filename]                - add new files by touching src and test pair"
 }
 
 _dev_help_dev_menu_add_todo() {
-  echo "    - dev ${C_YELLOW}add todo ${C_END} [msg]       - add to README.md todo info"
+  echo "    - dev ${C_YELLOW}add todo ${C_END} [msg]                    - add to README.md todo info"
 }
 
-_dev_help_dev_menu_snippets() {
-  echo "    - dev ${C_YELLOW}snippets ${C_END}             - echo and clip code snippets from atv"
+_dev_help_dev_menu_add_snippet() {
+  echo "    - dev ${C_YELLOW}add snippet ${C_END} [filename with ext.]  - add new snippet to atv"
+}
+
+_dev_help_dev_menu_snippet() {
+  echo "    - dev ${C_YELLOW}snippet ${C_END}                           - echo and clip code snippet from atv"
 }
 
 _dev_help_dev_menu_todos() {
-  echo "    - dev ${C_YELLOW}todos ${C_END}                - list all \"//TODO:\" marks in the code"
+  echo "    - dev ${C_YELLOW}todos ${C_END}                             - list all \"//TODO:\" marks in the code"
 }
 
 _dev_help_dev_menu_todocs() {
-  echo "    - dev ${C_YELLOW}todocs ${C_END}               - list all \"//TODOC:\" marks in the code"
+  echo "    - dev ${C_YELLOW}todocs ${C_END}                            - list all \"//TODOC:\" marks in the code"
 }
 
 _dev_menu_git_auto_init() {
   dev_menu_git_auto_init
 }
 _dev_help_dev_menu_git_auto_init() {
-  echo "    - dev ${C_YELLOW}git init ${C_END}             - auto git init"
+  echo "    - dev ${C_YELLOW}git init ${C_END}                          - auto git init"
 }
 
 _dev_menu_github_auto_init() {
   dev_menu_github_auto_init
 }
 _dev_help_dev_menu_github_auto_init() {
-  echo "    - dev ${C_YELLOW}github init ${C_END}          - auto github repo init"
+  echo "    - dev ${C_YELLOW}github init ${C_END}                       - auto github repo init"
 }
 
 _dev_menu_show_mynpms() {
@@ -100,7 +107,7 @@ _dev_menu_show_mynpms() {
 }
 
 _dev_help_dev_menu_show_mynpms() {
-  echo "    - dev ${C_YELLOW}show mynpms ${C_END}          - show my npm packages"
+  echo "    - dev ${C_YELLOW}show mynpms ${C_END}                       - show my npm packages"
 }
 
 
