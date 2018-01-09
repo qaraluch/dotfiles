@@ -94,5 +94,9 @@
   {
     "key": "ctrl+shift+c",
     "command": "esQuotes.transformBetweenQuotes"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "editor.action.joinLines"
   }
 ]
