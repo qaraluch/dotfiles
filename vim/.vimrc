@@ -13,9 +13,9 @@ noremap   <Right>  <NOP>
 """""""""""""""""""""""""""""""""""""""""""""""" SETTINGS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" tabs
 filetype plugin indent on
-set tabstop=4                                    "" show existing tab with 4 spaces width
-set shiftwidth=4                                 "" when indenting with '>', use 4 spaces width
-set expandtab                                    "" On pressing tab, insert 4 spaces
+set tabstop=2                                    "" show existing tab with 2 spaces width
+set shiftwidth=2                                 "" when indenting with '>', use 2 spaces width
+set expandtab                                    "" On pressing tab, insert 2 spaces
 
 """" line numbers
 set relativenumber
