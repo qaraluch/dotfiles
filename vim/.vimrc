@@ -9,6 +9,9 @@ noremap   <Down>   ddp
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+"""" empty lines with no insert mode
+noremap oo o<Esc>k
+noremap OO O<Esc>j
 
 """""""""""""""""""""""""""""""""""""""""""""""" SETTINGS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" tabs
