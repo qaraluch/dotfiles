@@ -113,5 +113,28 @@
       "  t.is(error.message.slice(0, 50) + \"...\", \"YYY-XXX - ${2:fn}(): ...\", msg);",
       "});"
     ]
+  },
+  "gulp-task": {
+    "description": "Gulp task.",
+    "prefix": "\\gulp-task",
+    "body": [
+      "const ${1:XXX} = () =>",
+      "  gulp",
+      "    .src(paths.${2:ZZZ})",
+      "    .pipe($0)",
+      "    .pipe(gulp.dest(paths.${3:QQQ}));",
+      "",
+      "gulp.task(\"${1:XXX}\", ${1:XXX});"
+    ]
+  },
+  "gulp-task-default": {
+    "description": "Gulp task default.",
+    "prefix": "\\gulp-default",
+    "body": [
+      "gulp.task(",
+      "  \"default\",",
+      "  gulp.${1|parallel,series|}(\"${2:task}\")$0",
+      ");"
+    ]
   }
 }
