@@ -28,7 +28,7 @@ set number
 set ff=unix
 syntax on                                        "" syntax highlights
 set directory^=$HOME/.vim/temp//                 "" swap files dir
-
+set nrformats=                                   "" number format for numbers like 007
 
 """""""""""""""""""""""""""""""""""""""""""""""" PLUGS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
