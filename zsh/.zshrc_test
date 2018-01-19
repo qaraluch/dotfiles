@@ -4,3 +4,15 @@
 # Print each PATH entry on a separate line
 alias path1='echo -e ${PATH//:/\\n}'
 
+alias nv='/mnt/c/tools/neovim/Neovim/bin/nvim-qt.exe -- $@' # not working ?!
+
+alias cubackup='gulp -f /mnt/h/dev/js/qt-fotoMgmt/qt-cu-backup.js $@ --silent'
+alias cubackupver='gulp -f /mnt/h/dev/js/qt-fotoMgmt/qt-cu-backup.js $@'
+alias cupresort='gulp -f /mnt/h/dev/js/qt-fotoMgmt/qt-cu-presort.js $@ --silent'
+alias cupresortver='gulp -f /mnt/h/dev/js/qt-fotoMgmt/qt-cu-presort.js $@'
+
+# mode in witch qr-fotomgmt gulp task will be working;
+export QT_FOTOMGMT='dev' # dev / prod
+
+ # add mkd alias see: [bash - Combined `mkdir` and `cd`? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/125385/combined-mkdir-and-cd)
+ # add CDATE=$(date +%Y-%m-%d) ; clip_it "[ $CDATE ]" #get date !working
