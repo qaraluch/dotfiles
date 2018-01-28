@@ -6,7 +6,8 @@ dev_menu() {
     elif [[ $1 == "add" && $2 == "todo" ]]; then
       echo "\\n //TODO: $3" >> README.md
     elif [[ $1 == "add" && $2 == "snippet" ]]; then
-      touch $3 ; subl_it $3
+      local LINK="$D_MYATV_SNIPPETS/$3"
+      touch  $LINK; subl_it $LINK
     elif [[ $1 == "snippet" ]]; then
       local _snippet=$(find $D_MYATV_SNIPPETS -maxdepth 1 | fzf | xargs cat)      # coupled with snippets in atv
       echo $_snippet
