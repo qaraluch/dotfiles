@@ -9,22 +9,35 @@
   "print-to-console": {
     "description": "Log output to console.",
     "prefix": "\\console-log",
-    "body": ["console.log('$1');", "$2"]
+    "body": [
+      "console.log('$1');",
+      "$2"
+    ]
   },
   "function-state": {
     "description": "Simple function with state passage.",
     "prefix": "\\function-state",
-    "body": ["function ${1:name}(state){", "  $0", "  return state;", "}"]
+    "body": [
+      "function ${1:name}(state){",
+      "  $0",
+      "  return state;",
+      "}"
+    ]
   },
   "object-assign": {
     "description": "Object assign.",
     "prefix": "\\object-assign",
-    "body": ["$0Object.assign(${1:Object.create(null)}, ${2:obj1}, ${3:obj2});"]
+    "body": [
+      "$0Object.assign(${1:Object.create(null)}, ${2:obj1}, ${3:obj2});"
+    ]
   },
   "promise-return-resolve": {
     "description": "Return promise resolve.",
     "prefix": "\\promsie-resolve",
-    "body": ["return Promise.resolve(${1:state}).then($2);", "$0"]
+    "body": [
+      "return Promise.resolve(${1:state}).then($2);",
+      "$0"
+    ]
   },
   "promise-catch": {
     "description": "Promise .catch().",
@@ -41,7 +54,11 @@
   "promise-return-promisify": {
     "description": "Return promise resolve.",
     "prefix": "\\promisify",
-    "body": ["return new Promise((resolve, reject) => {", "  $0", "});"]
+    "body": [
+      "return new Promise((resolve, reject) => {",
+      "  $0",
+      "});"
+    ]
   },
   "test-unit": {
     "description": "Ava test unit.",
@@ -135,6 +152,27 @@
       "  \"default\",",
       "  gulp.${1|parallel,series|}(\"${2:task}\")$0",
       ");"
+    ]
+  },
+  "js-syntax-template-literals-expresion": {
+    "description": "Insert ${} syntax.",
+    "prefix": "\\str-expression",
+    "body": [
+      "${$1}$0"
+    ]
+  },
+  "comment-todo": {
+    "description": "Insert //TODO: ",
+    "prefix": "\\comment-todo",
+    "body": [
+      "//TODO: $0"
+    ]
+  },
+  "comment-todoc": {
+    "description": "Insert //TODOC: ",
+    "prefix": "\\comment-todoc",
+    "body": [
+      "//TODOC: $0"
     ]
   }
 }
