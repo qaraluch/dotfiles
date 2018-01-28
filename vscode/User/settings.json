@@ -33,6 +33,5 @@
   },
   "esQuotes.defaultQuote": "\"",
   "material-icon-theme.showUpdateMessage": false,
-  "workbench.panel.location": "right",
   "editor.snippetSuggestions": "top"
 }
