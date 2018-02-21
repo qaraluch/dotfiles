@@ -33,5 +33,11 @@
   },
   "esQuotes.defaultQuote": "\"",
   "material-icon-theme.showUpdateMessage": false,
-  "editor.snippetSuggestions": "top"
+  "editor.snippetSuggestions": "top",
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "plaintext": "jade"
+  }
 }
