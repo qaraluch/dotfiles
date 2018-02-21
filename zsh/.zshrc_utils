@@ -9,6 +9,7 @@ export C_END=$'\033[0m'               # End
 
 # ICONS
 export I_TICK="[ ${C_GREEN}✔${C_END} ]"
-export I_CROSS="[ ${_C_YELLOW}✖${_C_END} ]"
+export I_WARN="[ ${C_YELLOW}!${C_END} ]"
+export I_CROSS="[ ${C_YELLOW}✖${C_END} ]"
 
 
