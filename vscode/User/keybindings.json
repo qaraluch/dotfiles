@@ -98,5 +98,10 @@
   {
     "key": "ctrl+m",
     "command": "editor.action.joinLines"
+  },
+  // Path Intellisense
+  {
+    "key": ".",
+    "command": ""
   }
 ]
