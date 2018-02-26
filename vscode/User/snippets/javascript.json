@@ -160,19 +160,5 @@
     "body": [
       "${$1}$0"
     ]
-  },
-  "comment-todo": {
-    "description": "Insert //TODO: ",
-    "prefix": "\\comment-todo",
-    "body": [
-      "//TODO: $0"
-    ]
-  },
-  "comment-todoc": {
-    "description": "Insert //TODOC: ",
-    "prefix": "\\comment-todoc",
-    "body": [
-      "//TODOC: $0"
-    ]
   }
 }
