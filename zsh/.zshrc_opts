@@ -18,6 +18,7 @@ export FZF_DEFAULT_COMMAND='find * ""'
 
 # HISTORY
 setopt INC_APPEND_HISTORY                   # Add commands to history as they are typed, don't wait until shell exit
+# setopt APPEND_HISTORY                       # Append not replace
 setopt HIST_REDUCE_BLANKS                   # Remove extra blanks from each command line being added to history
 setopt HIST_SAVE_NO_DUPS                    # Don't write duplicate entries in the history file.
 setopt HIST_IGNORE_DUPS                     # Don't record an entry that was just recorded again.

@@ -8,6 +8,7 @@ alias mygitremote='cd $D_MYGITREMOTE'               # .rc_globals
 # history
 alias h='history'
 alias hr='history | tail -n 20'                     # history recent
+alias hmark='history_zsh_markit'                    # zsh/fns
 alias hback='history_zsh_backup'                    # zsh/fns
 alias hbring='history_zsh_bring'                    # zsh/fns
 alias hedit='history_zsh_edit'                      # zsh/fns
