@@ -1,17 +1,22 @@
 # $HISTFILE is system file
+
 history_zsh_backup() {
-grep -v "^#" $HISTFILE > $F_HISTORY_BACKUP ;    # see .rc_globals
-cat $F_HISTORY_BACKUP > $F_HISTORY_BACKUP2 ;
-echo "${I_TICK} Copied bash history -> '$F_HISTORY_BACKUP2'"
+local TIME_STAMP=$(date +%s)
+local TIME_STAMP_HUMAN=$(date -d @"$TIME_STAMP" +'%Y-%m-%d_%H%M%S')
+history_zsh_add "<<<<<<<<<<< HISTORY >>>>>>>>>> #hback"             # just a marker
+grep -v "^#" $HISTFILE > $F_HISTORY_BACKUP ;                        # see .rc_globals # in ~
+cat $F_HISTORY_BACKUP > $F_HISTORY_BACKUP2 ;                                          # in qb
+cat $F_HISTORY_BACKUP > "$F_HISTORY_BACKUP3/.history_zsh_backup-$TIME_STAMP_HUMAN" ;  # in .temp
+echo "${I_TICK} Copied .zsh_history -> '$F_HISTORY_BACKUP2'"
+}
+
+history_zsh_edit() {
+  echo "Let's edit .zsh_history in editor!"
+  sleep 1
+  $EDITOR $F_HISTORY_BACKUP2
 }
 
 history_zsh_bring() {
 cat $F_HISTORY_BACKUP2 > $HISTFILE ;
-echo "${I_TICK} Restored .bash-history from mybashrc"
-}
-
-history_zsh_purge() {
-  echo "Let's do a history backup purge of file: ${C_YELLOW}$F_HISTORY_BACKUP2${C_END}"
-  sleep 1
-  $EDITOR $F_HISTORY_BACKUP2
+echo "${I_TICK} Restored .zsh_history from qb!"
 }

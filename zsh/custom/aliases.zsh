@@ -10,7 +10,7 @@ alias h='history'
 alias hr='history | tail -n 20'                     # history recent
 alias hback='history_zsh_backup'                    # zsh/fns
 alias hbring='history_zsh_bring'                    # zsh/fns
-alias hpurge='history_zsh_purge'                    # zsh/fns
+alias hedit='history_zsh_edit'                      # zsh/fns
 
 # sys
 alias e='exit'

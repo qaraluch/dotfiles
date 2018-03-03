@@ -1,0 +1,3 @@
+history_zsh_add() {
+  print -sr -- ${1%%$'\n'}
+}
