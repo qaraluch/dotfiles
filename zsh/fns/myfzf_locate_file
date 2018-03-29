@@ -9,6 +9,7 @@ myfzf_locate_file() {
   -d $HOME/.prvdbs/whome.db \
   -d $HOME/.prvdbs/EP.db \
   -d $HOME/.prvdbs/atv.db \
+  -d $HOME/.prvdbs/qb.db \
   -d $HOME/.prvdbs/config.db \
   -d $HOME/.prvdbs/Dropbox.db \
   -d $HOME/.prvdbs/gallery.db \

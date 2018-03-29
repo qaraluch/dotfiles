@@ -14,6 +14,8 @@ updatedb_better() {
   echo "${I_TICK} Done: .prvdbs/EP.db"
   command updatedb -l 0 -U $D_MYATV -o $HOME/.prvdbs/atv.db
   echo "${I_TICK} Done: .prvdbs/atv.db"
+  command updatedb -l 0 -U $D_MYQB -o $HOME/.prvdbs/qb.db
+  echo "${I_TICK} Done: .prvdbs/qb.db"
   command updatedb -l 0 -U $D_MYCONFIG -o $HOME/.prvdbs/config.db
   echo "${I_TICK} Done: .prvdbs/config.db"
   command updatedb -l 0 -U $D_MYDROPBOX -o $HOME/.prvdbs/Dropbox.db
