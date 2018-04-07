@@ -46,6 +46,7 @@ alias gch='git checkout $@'
 alias gchm='git checkout master'
 alias gd='git diff $@'
 alias ga='mygit_add $@'                             # .rc_git
+alias gaacm='mygit_add_all_and_commit_with_msg $@'  # .rc_git
 alias gau='mygit_add_update $@'                     # .rc_git
 alias gauc='mygit_add_update_and_commit $@'         # .rc_git
 alias gauca='mygit_add_update_and_commit_ammend'    # .rc_git
