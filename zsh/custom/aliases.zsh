@@ -81,4 +81,5 @@ alias nst='npm run start:test $@'
 alias nsc='npm run start:cli'
 alias ns='npm run start'
 alias nsr='npm run start:raw'
+alias nt='nps test'                                 # node-package-scripts
 
