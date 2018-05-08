@@ -6,12 +6,35 @@
   // More info: https://code.visualstudio.com/docs/editor/userdefinedsnippets
   // Editor: [snippet generator](https://pawelgrzybek.com/snippet-generator/)
   // Example:
-  "print-to-console": {
-    "description": "Log output to console.",
-    "prefix": "\\console-log",
+  "variable-const": {
+    "prefix": "\\c",
     "body": [
-      "console.log('$1');",
-      "$2"
+      "const $1 = $2;"
+    ]
+  },
+  "console-log": {
+    "prefix": "\\cl-arrow",
+    "body": [
+      "console.log('-->', $1);"
+    ]
+  },
+  "console-log-a-variable": {
+    "prefix": "\\cl-variable",
+    "body": "console.log(\"$0:\", $0)"
+  },
+  "print-to-console-for-each": {
+    "description": "Log output to console an array item.",
+    "prefix": "\\cl-for-each",
+    "body": [
+      "forEach(item => console.log(\"->\", item$1));"
+    ]
+  },
+  "require": {
+    "description": "Add require",
+    "prefix": "\\require",
+    "body": [
+      "const $1$2 = require(\"$1\");",
+      "$0"
     ]
   },
   "function-state": {
@@ -24,15 +47,24 @@
       "}"
     ]
   },
+  "function-result": {
+    "description": "Simple function with return result.",
+    "prefix": "\\function-result",
+    "body": [
+      "function ${1:name}(${2:xxx}){",
+      "  $0",
+      "  const result = true;",
+      "  return result;",
+      "}"
+    ]
+  },
   "object-assign": {
-    "description": "Object assign.",
     "prefix": "\\object-assign",
     "body": [
       "$0Object.assign(${1:Object.create(null)}, ${2:obj1}, ${3:obj2});"
     ]
   },
   "promise-return-resolve": {
-    "description": "Return promise resolve.",
     "prefix": "\\promsie-resolve",
     "body": [
       "return Promise.resolve(${1:state}).then($2);",
@@ -40,7 +72,6 @@
     ]
   },
   "promise-catch": {
-    "description": "Promise .catch().",
     "prefix": "\\promsie-catch",
     "body": [
       ".catch(${1:handleExeptions}.bind(state));",
@@ -51,9 +82,12 @@
       ""
     ]
   },
-  "promise-return-promisify": {
-    "description": "Return promise resolve.",
-    "prefix": "\\promisify",
+  "await-promise-all": {
+    "prefix": "\\promise-all",
+    "body": "await Promise.all(${1:value})"
+  },
+  "promise-return": {
+    "prefix": "\\r-promise",
     "body": [
       "return new Promise((resolve, reject) => {",
       "  $0",
@@ -132,7 +166,6 @@
     ]
   },
   "gulp-task": {
-    "description": "Gulp task.",
     "prefix": "\\gulp-task",
     "body": [
       "const ${1:XXX} = () =>",
@@ -145,7 +178,6 @@
     ]
   },
   "gulp-task-default": {
-    "description": "Gulp task default.",
     "prefix": "\\gulp-default",
     "body": [
       "gulp.task(",
@@ -154,11 +186,79 @@
       ");"
     ]
   },
-  "js-syntax-template-literals-expresion": {
-    "description": "Insert ${} syntax.",
+  "js-syntax-template-literals-expression": {
+    "description": "Insert: ${}",
     "prefix": "\\str-expression",
     "body": [
       "${$1}$0"
     ]
+  },
+  "JSON-stringify": {
+    "prefix": "\\json-stringify",
+    "body": "JSON.stringify($0)"
+  },
+  "JSON-parse": {
+    "prefix": "\\json-parse",
+    "body": "JSON.parse($0)"
+  },
+  "object-keys": {
+    "prefix": "\\object-keys",
+    "body": "Object.keys(${1:obj})"
+  },
+  "object-values": {
+    "prefix": "\\object-values",
+    "body": "Object.values(${1:obj})"
+  },
+  "object-entries": {
+    "prefix": "\\object-entries",
+    "body": "Object.entries(${1:obj})"
+  },
+  "return": {
+    "prefix": "\\r",
+    "body": "return ${0}"
+  },
+  "return-result": {
+    "prefix": "\\rr",
+    "body": "const result = \"xxx\";\nreturn result;"
+  },
+  "forEach-loop": {
+    "prefix": "\\forEach",
+    "body": "${1:iterable}.forEach((${2:item}) => {\n\t${0}\n})"
+  },
+  "map": {
+    "prefix": "\\map",
+    "body": "${1:iterable}.map((${2:item}) => {\n\t${0}\n})"
+  },
+  "reduce": {
+    "prefix": "\\reduce",
+    "body": "${1:iterable}.reduce((${2:previous}, ${3:current}) => {\n\t${0}\n}${4:, initial})"
+  },
+  "filter": {
+    "prefix": "\\filter",
+    "body": "${1:iterable}.filter((${2:item}) => {\n\t${0}\n})"
+  },
+  "if-statement": {
+    "prefix": "\\if",
+    "body": "if (${1:condition}) {\n\t${0}\n}"
+  },
+  "else-statement": {
+    "prefix": "\\else",
+    "body": "else {\n\t${0}\n}"
+  },
+  "else-if-statement": {
+    "prefix": "\\else-if",
+    "body": "else if (${1:condition}) {\n\t${0}\n}"
+  },
+  "throw-new-error": {
+    "prefix": "\\tne",
+    "body": "throw new ${0:error}"
+  },
+  "arrow-function": {
+    "prefix": "\\af",
+    "body": "(${1:arguments}) => ${2:statement}"
+  },
+  "arrow-function-with-return": {
+    "prefix": "\\af-with-return",
+    "body": "(${1:arguments}) => {\n\treturn ${0}\n}"
   }
 }
