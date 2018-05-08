@@ -3,8 +3,8 @@
   "workbench.startupEditor": "welcomePage",
   "editor.minimap.enabled": false,
   "projectManager.sortList": "Name",
-  "workbench.colorTheme": "Ayu Light",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.iconTheme": "eq-material-theme-icons",
   "editor.tabSize": 2,
   "editor.fontSize": 16,
   "files.eol": "\n",
@@ -39,5 +39,19 @@
     "javascript": "javascriptreact",
     "vue-html": "html",
     "plaintext": "jade"
-  }
+  },
+  "telemetry.enableTelemetry": false,
+  "cSpell.userWords": [
+    "childrens",
+    "dedupe",
+    "deduped",
+    "dups",
+    "hasher",
+    "maindir",
+    "maindirs",
+    "promisify",
+    "todoc",
+    "toscav",
+    "xform"
+  ]
 }
