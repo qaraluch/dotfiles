@@ -16,6 +16,8 @@ dev_menu() {
       grep --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist -rEI "//TODO:" . 2>/dev/null
     elif [[ $1 == "todocs" ]]; then
       grep --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist -rEI "//TODOC:" . 2>/dev/null
+    elif [[ $1 == "toscavs" ]]; then
+      grep --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist -rEI "//TOSCAVS:" . 2>/dev/null
     elif [[ $1 == "git" && $2 == "init" ]]; then
       _dev_menu_git_auto_init
     elif [[ $1 == "github" && $2 == "init" ]]; then
@@ -53,6 +55,7 @@ dev_run_help() {
   _dev_help_dev_menu_snippet
   _dev_help_dev_menu_todos
   _dev_help_dev_menu_todocs
+  _dev_help_dev_menu_toscavs
   _dev_help_dev_menu_git_auto_init
   _dev_help_dev_menu_github_auto_init
   _dev_help_dev_menu_show_mynpms
@@ -87,6 +90,10 @@ _dev_help_dev_menu_todos() {
 
 _dev_help_dev_menu_todocs() {
   echo "    - dev ${C_YELLOW}todocs ${C_END}                            - list all \"//TODOC:\" marks in the code"
+}
+
+_dev_help_dev_menu_toscavs() {
+  echo "    - dev ${C_YELLOW}toscavs ${C_END}                           - list all \"//TOSCAVS:\" marks in the code"
 }
 
 _dev_menu_git_auto_init() {
