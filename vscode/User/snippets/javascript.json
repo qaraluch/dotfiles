@@ -255,7 +255,7 @@
   },
   "arrow-function": {
     "prefix": "\\af",
-    "body": "(${1:arguments}) => ${2:statement}"
+    "body": "(${1:item}) => ${2:item}"
   },
   "arrow-function-with-return": {
     "prefix": "\\af-with-return",
