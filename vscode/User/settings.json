@@ -12,7 +12,11 @@
     "editorWarning.border": "#336699",
     "editorWarning.foreground": "#336699",
     "editorError.border": "#ff0800",
-    "editorError.foreground": "#ff0800"
+    "editorError.foreground": "#ff0800",
+    "statusBar.background": "#8FBCBB",
+    "statusBar.noFolderBackground": "#8FBCBB",
+    "statusBar.debuggingBackground": "#8FBCBB",
+    "statusBar.foreground": "#434C5E"
   },
   "npm-intellisense.importES6": true,
   "npm-intellisense.importQuotes": "'",
@@ -42,6 +46,7 @@
   },
   "telemetry.enableTelemetry": false,
   "cSpell.userWords": [
+    "Promisified",
     "childrens",
     "dedupe",
     "deduped",
@@ -49,9 +54,32 @@
     "hasher",
     "maindir",
     "maindirs",
+    "myutil",
     "promisify",
+    "stringify",
     "todoc",
     "toscav",
     "xform"
-  ]
+  ],
+  "editor.lineNumbers": "relative",
+  "bracketPairColorizer.highlightActiveScope": true,
+  "bracketPairColorizer.forceUniqueOpeningColor": false,
+  "vim.disableExtension": false,
+  "vim.easymotion": true,
+  "vim.useSystemClipboard": true,
+  "vim.handleKeys": {
+    "<C-w>": false
+  },
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors": {
+    "normal": [
+      "#8FBCBB",
+      "#434C5E"
+    ],
+    "insert": "#BF616A",
+    "visual": "#B48EAD",
+    "visualline": "#B48EAD",
+    "visualblock": "#A3BE8C",
+    "replace": "#D08770"
+  }
 }
