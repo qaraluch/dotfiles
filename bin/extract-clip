@@ -15,6 +15,12 @@ Usage:
             $ ffmpeg -i input-video.mp4 -ss 00:01:30 -t 00:00:10 -c copy -map_metadata 0 output-video.mp4
             ${PROG_NAME} <input>         <start-time> <how-long> <output>
             ${PROG_NAME} input-video.mp4 1:30         10   output-video.mp4 
+        or:
+            With -to parameter (end-time).
+        Exmaple:
+            $ ffmpeg -i input-video.mp4 -ss 00:01:30 -to 00:02:00 -c copy -map_metadata 0 output-video.mp4
+            ${PROG_NAME} <input>         <start-time> <end-time> <output>
+            ${PROG_NAME} input-video.mp4 1:30         -to 2:00   output-video.mp4 
 EOL
   exit $1
 }
@@ -25,11 +31,14 @@ parseOptions(){
     key="$1"
 
     case $key in
-        # -e|--extension)
-        # EXTENSION="$2"
-        # shift # past argument
-        # shift # past value
-        # ;;
+        -t)
+        TO="-t" # uses longiness
+        shift # past argument
+        ;;
+        -to)
+        TO="-to" # use ffmpeg -to flag i.e. specific end time 
+        shift # past argument
+        ;;
         # -b|--big)
         # BIG="$2" #jak pusty to nadpisuje defoltowy do ""  - przetestuj!
         # isEmpty "$2" || BIG="$2" #to działa ok!
@@ -65,8 +74,7 @@ main() {
 
     #defaults
     local DEFAULT=YES
-    # local EXTENSION=".ter"
-    # local BIG="big"
+    local TO="-t"
     local POSITIONAL=()
 
     ifNoArgsPrintUsage $ARGS
@@ -77,17 +85,16 @@ main() {
     if [[ $DEFAULT == "YES" ]] ; then
     local INPUT=$1
     local START=$2
-    local LONG=$3
+    local END=$3
     local OUTPUT=$4
     
-    # echo FILE EXTENSION  = "${EXTENSION}"
-    # echo BIG         = "${BIG}"
     # echo DEFAULT         = "${DEFAULT}"
     # echo INPUT = ${INPUT}
-    # echo LONG = ${LONG}
+    # echo END = ${END}
     # echo START = ${START}
     # echo OUTPUT = ${OUTPUT}
-    ffmpeg -i ${INPUT} -ss ${START} -t ${LONG} -c copy -map_metadata 0 ${OUTPUT}
+    # echo TO = ${TO}
+    ffmpeg -i ${INPUT} -ss ${START} ${TO} ${END} -c copy -map_metadata 0 ${OUTPUT}
     fi
 
 }
