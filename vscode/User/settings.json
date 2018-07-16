@@ -1,6 +1,6 @@
 {
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
-  "workbench.startupEditor": "welcomePage",
+  "workbench.startupEditor": "newUntitledFile",
   "editor.minimap.enabled": false,
   "projectManager.sortList": "Name",
   "workbench.colorTheme": "Material Theme Palenight",
@@ -40,7 +40,7 @@
   "editor.snippetSuggestions": "top",
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
+    // "javascript": "javascriptreact",
     "vue-html": "html",
     "plaintext": "jade"
   },
@@ -70,7 +70,7 @@
   "vim.handleKeys": {
     "<C-w>": false
   },
-  "vim.statusBarColorControl": true,
+  "vim.statusBarColorControl": false,
   "vim.statusBarColors": {
     "normal": [
       "#8FBCBB",
@@ -81,5 +81,60 @@
     "visualline": "#B48EAD",
     "visualblock": "#A3BE8C",
     "replace": "#D08770"
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "g",
+        "o"
+      ],
+      "after": [
+        "o",
+        "<Esc>",
+        "k"
+      ],
+    },
+    {
+      "before": [
+        "g",
+        "O"
+      ],
+      "after": [
+        "O",
+        "<Esc>",
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>",
+        "o"
+      ],
+      "after": [
+        "O",
+        "<Esc>",
+        "j",
+        "o",
+        "<Esc>",
+        "k",
+        "i"
+      ],
+    },
+    {
+      "before": [
+        "S"
+      ],
+      "after": [
+        "c",
+        "i",
+        "w",
+        "<C-r>",
+        "0",
+        "<Esc>"
+      ],
+    },
+  ],
+  "files.associations": {
+    "*.json": "jsonc"
   }
 }
