@@ -12,10 +12,28 @@
       "const $1 = $2;"
     ]
   },
+  "console-log-line": {
+    "prefix": "\\cl-line",
+    "body": [
+      "console.log('\\n----------------------');"
+    ]
+  },
   "console-log": {
     "prefix": "\\cl-arrow",
     "body": [
       "console.log('-->', $1);"
+    ]
+  },
+  "console-log-2": {
+    "prefix": "\\cl-arrow-2",
+    "body": [
+      "console.log('  -->', $1);"
+    ]
+  },
+  "console-log-3": {
+    "prefix": "\\cl-arrow-2",
+    "body": [
+      "console.log('    -->', $1);"
     ]
   },
   "console-log-a-variable": {
@@ -27,6 +45,15 @@
     "prefix": "\\cl-for-each",
     "body": [
       "forEach(item => console.log(\"->\", item$1));"
+    ]
+  },
+  "module-exports": {
+    "description": "Module exports",
+    "prefix": "\\module-exports",
+    "body": [
+      "module.exports = {",
+      " $1",
+      "};"
     ]
   },
   "require": {
