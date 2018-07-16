@@ -12,9 +12,9 @@ ${PROG_NAME} - Wrapper for ffmpeg to extract media clips.
 Usage:
   1. Default mode: extract video clip:
         Example:
-        $ ffmpeg -i input-video.mp4 -ss 00:01:30 -t 00:00:10 -c copy -map_metadata 0 output-video.mp4
-        ${PROG_NAME} <input>         <how-long> <start-time> <output>
-        ${PROG_NAME} input-video.mp4 10          1:30        output-video.mp4 
+            $ ffmpeg -i input-video.mp4 -ss 00:01:30 -t 00:00:10 -c copy -map_metadata 0 output-video.mp4
+            ${PROG_NAME} <input>         <start-time> <how-long> <output>
+            ${PROG_NAME} input-video.mp4 1:30         10   output-video.mp4 
 EOL
   exit $1
 }
@@ -76,8 +76,8 @@ main() {
     # default - example 1
     if [[ $DEFAULT == "YES" ]] ; then
     local INPUT=$1
-    local LONG=$2
-    local START=$3
+    local START=$2
+    local LONG=$3
     local OUTPUT=$4
     
     # echo FILE EXTENSION  = "${EXTENSION}"
