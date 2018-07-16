@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Author: qaraluch - 07.2018 - MIT
+
+readonly PROG_NAME=$(basename $0)
+readonly ARGS="$@"
+# readonly PROG_DIR=$(readlink -m $(dirname $0))
+
+printUsage() {
+  cat <<EOL
+${PROG_NAME} - Wrapper for ffmpeg to extract media clips.
+
+Usage:
+  1. Default mode: extract video clip:
+        Example:
+        $ ffmpeg -i input-video.mp4 -ss 00:01:30 -t 00:00:10 -c copy -map_metadata 0 output-video.mp4
+        ${PROG_NAME} <input>         <how-long> <start-time> <output>
+        ${PROG_NAME} input-video.mp4 10          1:30        output-video.mp4 
+EOL
+  exit $1
+}
+
+parseOptions(){
+    while [[ $# -gt 0 ]]
+    do
+    key="$1"
+
+    case $key in
+        # -e|--extension)
+        # EXTENSION="$2"
+        # shift # past argument
+        # shift # past value
+        # ;;
+        # -b|--big)
+        # BIG="$2" #jak pusty to nadpisuje defoltowy do ""  - przetestuj!
+        # isEmpty "$2" || BIG="$2" #to działa ok!
+        # shift # past argument
+        # shift # past value
+        # ;;
+        -h|--help)
+        printUsage 1
+        ;;
+        --default)
+        DEFAULT=YES
+        shift # past argument
+        ;;
+        *)    # unknown option
+        POSITIONAL+=("$1") # save it in an array for later
+        shift # past argument
+        ;;
+    esac
+    done
+}
+
+isEmpty() {
+    local var=$1
+    [[ -z $var ]]
+}
+
+ifNoArgsPrintUsage(){
+  isEmpty $1 \
+      && printUsage 1
+}
+
+main() {
+
+    #defaults
+    local DEFAULT=YES
+    # local EXTENSION=".ter"
+    # local BIG="big"
+    local POSITIONAL=()
+
+    ifNoArgsPrintUsage $ARGS
+    parseOptions $ARGS
+    set -- "${POSITIONAL[@]}" # restore positional parameters
+
+    # default - example 1
+    if [[ $DEFAULT == "YES" ]] ; then
+    local INPUT=$1
+    local LONG=$2
+    local START=$3
+    local OUTPUT=$4
+    
+    # echo FILE EXTENSION  = "${EXTENSION}"
+    # echo BIG         = "${BIG}"
+    # echo DEFAULT         = "${DEFAULT}"
+    # echo INPUT = ${INPUT}
+    # echo LONG = ${LONG}
+    # echo START = ${START}
+    # echo OUTPUT = ${OUTPUT}
+    ffmpeg -i ${INPUT} -ss ${START} -t ${LONG} -c copy -map_metadata 0 ${OUTPUT}
+    fi
+
+}
+
+main $ARGS
+
