@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Author: qaraluch - 07.2018 - MIT
+
+readonly PROG_NAME=$(basename $0)
+readonly PROG_DIR=$(readlink -m $(dirname $0))
+readonly ARGS="$@"
+
+printUsage() {
+  cat <<EOL
+${PROG_NAME} - Execute multiple commands from file.
+
+Usage:
+    ${PROG_NAME} commands.txt
+EOL
+  exit $1
+}
+
+parseOptions(){
+    while [[ $# -gt 0 ]]
+    do
+    key="$1"
+
+    case $key in
+        -t)
+        TO="-t" # uses longiness
+        shift 
+        ;;
+        -e|--extension)
+        EXTENSION="$2"
+        shift # past argument
+        shift # past value
+        ;;
+
+        -h|--help)
+        printUsage 1
+        ;;
+        *)                  # unknown option
+        POSITIONAL+=("$1") 
+        shift 
+        ;;
+    esac
+    done
+}
+
+isEmpty() {
+    local var=$1
+    [[ -z $var ]]
+}
+
+ifNoArgsPrintUsage(){
+  isEmpty $1 \
+      && printUsage 1
+}
+
+main() {
+
+    # var default
+    local DEFAULT=YES
+    local TO="-to"
+    local EXTENSION=".jpg"
+    local POSITIONAL=()
+
+    ifNoArgsPrintUsage $ARGS
+    parseOptions $ARGS
+    set -- "${POSITIONAL[@]}"
+
+    # default
+    if [[ $DEFAULT == "YES" ]] ; then
+    local INPUT=$1
+    echo DEFAULT = "${DEFAULT}"
+    echo INPUT = "${INPUT}"
+    echo EXTENSION = "${EXTENSION}"
+    echo TO = "${TO}"
+    # command here!
+    fi
+
+}
+
+main
