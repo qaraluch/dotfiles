@@ -3,7 +3,6 @@
 
 readonly PROG_NAME=$(basename $0)
 readonly ARGS="$@"
-# readonly PROG_DIR=$(readlink -m $(dirname $0))
 
 printUsage() {
   cat <<EOL
@@ -33,28 +32,22 @@ parseOptions(){
     case $key in
         -t)
         TO="-t" # uses longiness
-        shift # past argument
+        shift 
         ;;
         -to)
         TO="-to" # use ffmpeg -to flag i.e. specific end time 
-        shift # past argument
+        shift 
         ;;
-        # -b|--big)
-        # BIG="$2" #jak pusty to nadpisuje defoltowy do ""  - przetestuj!
-        # isEmpty "$2" || BIG="$2" #to działa ok!
-        # shift # past argument
-        # shift # past value
-        # ;;
         -h|--help)
         printUsage 1
         ;;
         --default)
         DEFAULT=YES
-        shift # past argument
+        shift 
         ;;
-        *)    # unknown option
-        POSITIONAL+=("$1") # save it in an array for later
-        shift # past argument
+        *)                  # unknown option
+        POSITIONAL+=("$1") 
+        shift 
         ;;
     esac
     done
@@ -79,7 +72,7 @@ main() {
 
     ifNoArgsPrintUsage $ARGS
     parseOptions $ARGS
-    set -- "${POSITIONAL[@]}" # restore positional parameters
+    set -- "${POSITIONAL[@]}"
 
     # default - example 1
     if [[ $DEFAULT == "YES" ]] ; then
