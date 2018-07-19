@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Author: qaraluch - 07.2018 - MIT
+
+readonly PROG_NAME=$(basename $0)
+readonly ARGS="$@"
+
+printUsage() {
+  cat <<EOL
+${PROG_NAME} - Wrapper for ffmpeg to extract media clips.
+
+Usage:
+  1. Default mode: extract video clip:
+        Example:
+            $ ffmpeg -i input-video.mp4 -ss 00:01:30 -t 00:00:10 -c copy -map_metadata 0 output-video.mp4
+            ${PROG_NAME} <input>         <start-time> <how-long> <output>
+            ${PROG_NAME} input-video.mp4 1:30         10   output-video.mp4 
+        or:
+            With -to parameter (end-time).
+        Exmaple:
+            $ ffmpeg -i input-video.mp4 -ss 00:01:30 -to 00:02:00 -c copy -map_metadata 0 output-video.mp4
+            ${PROG_NAME} <input>         <start-time> <end-time> <output>
+            ${PROG_NAME} input-video.mp4 1:30         -to 2:00   output-video.mp4 
+EOL
+  exit $1
+}
+
+parseOptions(){
+    while [[ $# -gt 0 ]]
+    do
+    key="$1"
+
+    case $key in
+        -t)
+        TO="-t" # uses longiness
+        shift 
+        ;;
+        -to)
+        TO="-to" # use ffmpeg -to flag i.e. specific end time 
+        shift 
+        ;;
+        -h|--help)
+        printUsage 1
+        ;;
+        --default)
+        DEFAULT=YES
+        shift 
+        ;;
+        *)                  # unknown option
+        POSITIONAL+=("$1") 
+        shift 
+        ;;
+    esac
+    done
+}
+
+isEmpty() {
+    local var=$1
+    [[ -z $var ]]
+}
+
+ifNoArgsPrintUsage(){
+  isEmpty $1 \
+      && printUsage 1
+}
+
+main() {
+
+    #defaults
+    local DEFAULT=YES
+    local TO="-t"
+    local POSITIONAL=()
+
+    ifNoArgsPrintUsage $ARGS
+    parseOptions $ARGS
+    set -- "${POSITIONAL[@]}"
+
+    # default - example 1
+    if [[ $DEFAULT == "YES" ]] ; then
+    local INPUT=$1
+    local START=$2
+    local END=$3
+    local OUTPUT=$4
+    
+    # echo DEFAULT         = "${DEFAULT}"
+    # echo INPUT = ${INPUT}
+    # echo END = ${END}
+    # echo START = ${START}
+    # echo OUTPUT = ${OUTPUT}
+    # echo TO = ${TO}
+    ffmpeg -i ${INPUT} -ss ${START} ${TO} ${END} -c copy -map_metadata 0 ${OUTPUT}
+    fi
+
+}
+
+main $ARGS
+
