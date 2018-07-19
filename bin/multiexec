@@ -2,7 +2,7 @@
 # Author: qaraluch - 07.2018 - MIT
 
 readonly PROG_NAME=$(basename $0)
-readonly PROG_DIR=$(readlink -m $(dirname $0))
+# readonly PROG_DIR=$(readlink -m $(dirname $0))
 readonly ARGS="$@"
 
 printUsage() {
@@ -19,18 +19,11 @@ parseOptions(){
     while [[ $# -gt 0 ]]
     do
     key="$1"
-
     case $key in
-        -t)
-        TO="-t" # uses longiness
-        shift 
-        ;;
-        -e|--extension)
-        EXTENSION="$2"
-        shift # past argument
-        shift # past value
-        ;;
-
+        # -t)
+        # TO="-t" # uses longiness
+        # shift 
+        # ;;
         -h|--help)
         printUsage 1
         ;;
@@ -53,27 +46,16 @@ ifNoArgsPrintUsage(){
 }
 
 main() {
-
     # var default
-    local DEFAULT=YES
-    local TO="-to"
-    local EXTENSION=".jpg"
+    # local TO="-to"
     local POSITIONAL=()
-
     ifNoArgsPrintUsage $ARGS
     parseOptions $ARGS
     set -- "${POSITIONAL[@]}"
-
-    # default
-    if [[ $DEFAULT == "YES" ]] ; then
-    local INPUT=$1
-    echo DEFAULT = "${DEFAULT}"
-    echo INPUT = "${INPUT}"
-    echo EXTENSION = "${EXTENSION}"
-    echo TO = "${TO}"
-    # command here!
-    fi
-
+    local CMDSFILE=$1
+    # echo TO = "${TO}"
+    echo CMDSFILE = "${CMDSFILE}"
+    xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE)
 }
 
 main
