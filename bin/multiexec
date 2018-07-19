@@ -4,6 +4,7 @@
 readonly PROG_NAME=$(basename $0)
 # readonly PROG_DIR=$(readlink -m $(dirname $0))
 readonly ARGS="$@"
+readonly TIME_STAMP=$(date +%s)
 
 printUsage() {
   cat <<EOL
@@ -45,6 +46,11 @@ ifNoArgsPrintUsage(){
       && printUsage 1
 }
 
+getFileName(){
+    local path=$1
+    echo "${path##*/}"
+}
+
 main() {
     # var default
     # local TO="-to"
@@ -53,9 +59,10 @@ main() {
     parseOptions $ARGS
     set -- "${POSITIONAL[@]}"
     local CMDSFILE=$1
+    local LOGFILENAME=$(getFileName $CMDSFILE)
     # echo TO = "${TO}"
-    echo CMDSFILE = "${CMDSFILE}"
-    xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE)
+    # echo CMDSFILE = "${CMDSFILE}"
+    xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE) 2>&1 > "${LOGFILENAME}-${TIME_STAMP}.log"
 }
 
 main
