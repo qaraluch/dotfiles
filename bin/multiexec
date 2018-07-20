@@ -2,20 +2,14 @@
 # Author: qaraluch - 07.2018 - MIT
 
 readonly PROG_NAME=$(basename $0)
-# readonly PROG_DIR=$(readlink -m $(dirname $0))
 readonly ARGS="$@"
-readonly TIME_STAMP=$(date +%s)
 
 printUsage() {
   cat <<EOL
-${PROG_NAME} - Execute multiple commands from file. All stdout of commands
-               is saved to .log files. Only stderr is redirected to stdout 
-               of this command.
-
+${PROG_NAME} - Execute multiple commands from file.
 
 Usage:
     ${PROG_NAME} commands.txt
-        -t --turn-off-logging  
 EOL
   exit $1
 }
@@ -25,10 +19,6 @@ parseOptions(){
     do
     key="$1"
     case $key in
-        -t|--turn-off-logging)
-        NOLOGGING="YES" 
-        shift 
-        ;;
         -h|--help)
         printUsage 1
         ;;
@@ -50,28 +40,15 @@ ifNoArgsPrintUsage(){
       && printUsage 1
 }
 
-getFileName(){
-    local path=$1
-    echo "${path##*/}"
-}
-
 main() {
     # var default
-    local NOLOGGING="NO"
     local POSITIONAL=()
     ifNoArgsPrintUsage $ARGS
     parseOptions $ARGS
     set -- "${POSITIONAL[@]}"
     local CMDSFILE=$1
-    local LOG_FILENAME_BASE=$(getFileName $CMDSFILE)
-    # echo NOLOGGING = "${NOLOGGING}"
     # echo CMDSFILE = "${CMDSFILE}"
-    if [[ $NOLOGGING == "YES" ]] ; then
-        xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE)
-    else
-        local LOGFILE="${LOG_FILENAME_BASE}-${TIME_STAMP}.log"
-        xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE) 2>&1 > $LOGFILE
-        echo "[!] Created log file: $LOGFILE"
+    xargs -0 -n 1 bash -c < <(tr \\n \\0 < $CMDSFILE)
     fi
 }
 
