@@ -7,10 +7,13 @@ history_zsh_markit(){
 history_zsh_backup() {
 local TIME_STAMP=$(date +%s)
 local TIME_STAMP_HUMAN=$(date -d @"$TIME_STAMP" +'%Y-%m-%d_%H%M%S')
-grep -v "^#" --binary-files=text $HISTFILE > $F_HISTORY_BACKUP ;                      # see .rc_globals # in ~
-cat $F_HISTORY_BACKUP > $F_HISTORY_BACKUP2 ;                                          # in qb
-cat $F_HISTORY_BACKUP > "$F_HISTORY_BACKUP3/.history_zsh_backup-$TIME_STAMP_HUMAN" ;  # in .temp
+local F_HISTORY_BACKUP3="$D_HISTORY_BACKUP3/.history_zsh_backup-$TIME_STAMP_HUMAN"
+grep -v "^#" --binary-files=text $HISTFILE > $F_HISTORY_BACKUP &&                      # see .rc_globals # in ~
+cat $F_HISTORY_BACKUP > $F_HISTORY_BACKUP2 &&                                          # in qb
+cat $F_HISTORY_BACKUP >  $D_HISTORY_BACKUP3                                            # in .temp
+echo "${I_TICK} Copied .zsh_history -> '$F_HISTORY_BACKUP'"
 echo "${I_TICK} Copied .zsh_history -> '$F_HISTORY_BACKUP2'"
+echo "${I_TICK} Copied .zsh_history -> '$F_HISTORY_BACKUP3'"
 }
 
 history_zsh_edit() {

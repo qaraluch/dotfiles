@@ -24,6 +24,7 @@ mygit_clip_hash() { clip_it $(mygit_get_commit_hash) ; }
 mygit_clip_msg() { clip_it $(mygit_get_commit_msg) ; }
 
 ## pretty formats
+## !!!! escape collors: see:[Git - pretty-formats Documentation](https://git-scm.com/docs/pretty-formats)
 git_log_default_format='%C(auto,yellow)%h - %C(auto,blue)%>(14,trunc) %cd - %C(auto,reset)%s%C(auto,cyan)% gD% D'
 git_log_alternative_format='%C(auto,yellow)%h - %C(auto,cyan) %cd %C(auto,reset) - %s%C(auto,cyan)% gD% D'
 git_log_forGraph_format='%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s'

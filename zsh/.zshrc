@@ -11,7 +11,7 @@ ZSH_CUSTOM=$HOME/.dotfiles-source/zsh/custom
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell" # default
 # ZSH_THEME="agnoster" # font display problem
-ZSH_THEME="norm"
+ZSH_THEME="norm" #sth. wrong!???
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/

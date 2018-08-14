@@ -45,6 +45,12 @@
     "plaintext": "jade"
   },
   "telemetry.enableTelemetry": false,
+  "cSpell.enabledLanguageIds": [
+    "javascript",
+    "shellscript",
+    "json",
+    "markdown"
+  ],
   "cSpell.userWords": [
     "Promisified",
     "childrens",
@@ -64,18 +70,17 @@
   "editor.lineNumbers": "relative",
   "bracketPairColorizer.highlightActiveScope": true,
   "bracketPairColorizer.forceUniqueOpeningColor": false,
+  "rewrap.wrappingColumn": 60,
   "vim.disableExtension": false,
   "vim.easymotion": true,
   "vim.useSystemClipboard": true,
   "vim.handleKeys": {
-    "<C-w>": false
+    "<C-w>": false,
+    "<C-b>": false
   },
   "vim.statusBarColorControl": false,
   "vim.statusBarColors": {
-    "normal": [
-      "#8FBCBB",
-      "#434C5E"
-    ],
+    "normal": ["#8FBCBB", "#434C5E"],
     "insert": "#BF616A",
     "visual": "#B48EAD",
     "visualline": "#B48EAD",
@@ -84,57 +89,24 @@
   },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "g",
-        "o"
-      ],
-      "after": [
-        "o",
-        "<Esc>",
-        "k"
-      ],
+      "before": ["g", "o"],
+      "after": ["o", "<Esc>", "k"]
     },
     {
-      "before": [
-        "g",
-        "O"
-      ],
-      "after": [
-        "O",
-        "<Esc>",
-      ],
+      "before": ["g", "O"],
+      "after": ["O", "<Esc>"]
     },
     {
-      "before": [
-        "<leader>",
-        "<leader>",
-        "o"
-      ],
-      "after": [
-        "O",
-        "<Esc>",
-        "j",
-        "o",
-        "<Esc>",
-        "k",
-        "i"
-      ],
+      "before": ["<leader>", "<leader>", "o"],
+      "after": ["O", "<Esc>", "j", "o", "<Esc>", "k", "i"]
     },
     {
-      "before": [
-        "S"
-      ],
-      "after": [
-        "c",
-        "i",
-        "w",
-        "<C-r>",
-        "0",
-        "<Esc>"
-      ],
-    },
+      "before": ["S"],
+      "after": ["c", "i", "w", "<C-r>", "0", "<Esc>"]
+    }
   ],
   "files.associations": {
-    "*.json": "jsonc"
+    "*.json": "jsonc",
+    "*.zshrc_*": "shellscript"
   }
 }

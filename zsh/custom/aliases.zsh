@@ -7,11 +7,13 @@ alias mygitremote='cd $D_MYGITREMOTE'               # .rc_globals
 
 # history
 alias h='history'
-alias hr='history | tail -n 20'                     # history recent
-alias hmark='history_zsh_markit'                    # zsh/fns
-alias hback='history_zsh_backup'                    # zsh/fns
-alias hbring='history_zsh_bring'                    # zsh/fns
-alias hedit='history_zsh_edit'                      # zsh/fns
+alias hr='history | tail -n 20'                           # history recent
+alias history-recent-all-screen='history | tail -n 60'    # history recent
+alias hra='history-recent-all-screen'                     # history recent
+alias hmark='history_zsh_markit'                          # zsh/fns
+alias hback='history_zsh_backup'                          # zsh/fns
+alias hbring='history_zsh_bring'                          # zsh/fns
+alias hedit='history_zsh_edit'                            # zsh/fns
 
 # sys
 alias e='exit'
@@ -36,7 +38,7 @@ alias udb='updatedb_better'                         # zsh/fn for locate command
 alias rdb='updatedb_remove_dbs'                     # zsh/fn for locate command
 
 # editors
-alias su='subl_it $1'                               # zsh/utlis
+alias sub='subl_it $1'                               # zsh/utlis
 alias co='code_it $1'                               # zsh/utlis
 alias subl='subl.exe $@'
 alias v='vim $@'
