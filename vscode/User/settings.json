@@ -51,6 +51,7 @@
     "json",
     "markdown"
   ],
+  "cSpell.language": "en,pl,pl-PL",
   "cSpell.userWords": [
     "Promisified",
     "childrens",
@@ -90,7 +91,7 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["g", "o"],
-      "after": ["o", "<Esc>", "k"]
+      "after": ["o", "<Esc>"]
     },
     {
       "before": ["g", "O"],

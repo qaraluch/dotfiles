@@ -61,15 +61,9 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 
 ### ANTIGEN
-# antigen time!
-source /usr/share/zsh-antigen/antigen.zsh
-local b="antigen-bundle"
-
-# Syntax highlighting on the readline
-$b zsh-users/zsh-syntax-highlighting
-$b urbainvaes/fzf-marks
-
-# Tell antigen that you're done.
+source ~/antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle urbainvaes/fzf-marks
 antigen apply
 
 source $ZSH/oh-my-zsh.sh

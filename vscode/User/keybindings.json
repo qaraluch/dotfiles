@@ -22,12 +22,12 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+alt+S",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+alt+S",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
